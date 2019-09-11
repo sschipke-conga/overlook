@@ -10,8 +10,10 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  text-decoration: none;
 }
 .tabs-nav li {
+  text-decoration: none;
   width: 50%;
 }
 .tabs-nav li:first-child a {
@@ -35,7 +37,6 @@ a {
   background: #fff;
   border-bottom-color: transparent;
   color: #2db34a;
-  cursor: default;
 }
 .tabs-stage {
   border: 1px solid #cecfd5;
