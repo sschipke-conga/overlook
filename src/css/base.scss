@@ -1,9 +1,14 @@
+@import 'variables';
+
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .tabs {
-  max-width: 538px;
+  margin-left: 5%;
+  width: 90%;
 }
 
 ul {
@@ -12,7 +17,9 @@ ul {
   justify-content: space-between;
   list-style: none;
   text-decoration: none;
+  width: 60%;
 }
+
 .tabs-nav li {
   text-decoration: none;
   width: 50%;
@@ -26,25 +33,31 @@ ul {
 }
 a {
   background: #eaeaed;
-  border: 1px solid #cecfd5;
-  color: #0087cc;
+  border: 1px solid $accentColor;
+  color: $lightBlue;
   display: block;
   font-weight: 600;
   padding: 10px 0;
   text-align: center;
   text-decoration: none;
 }
-.tab-active a {
-  background: #fff;
+.tab-active{
+  a {
+  background: $backgroundColor;
   border-bottom-color: transparent;
-  color: #2db34a;
+  color: $activeBlue;
+  }
 }
+
+
 .tabs-stage {
-  border: 1px solid #cecfd5;
+  background: $backgroundColor;
+  border: 1px solid $accentColor;
   border-radius: 0 0 6px 6px;
   border-top: 0;
   clear: both;
+  height: 85vh;
   padding: 24px 30px;
-  position: relative;
-  top: -1px;
+  // position: relative;
+  width: 100%;
 }
