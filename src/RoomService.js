@@ -1,20 +1,27 @@
-class Hotel {
+class RoomService {
   constructor(serviceData) {
-    this.customers = serviceData;
+    this.orders = serviceData
   }
 
-  findOrdersByCustomer() {
-    
+  findOrdersByCustomer(guestID) {
+    return this.orders.filter(orders => orders.userID === guestID)
+  
   }
   
-  findOrdersByDate() {
-
+  findOrdersByDate(date) {
+    return this.orders.filter(order => order.date === date)
   }
 
-  addNewCustomer() {
-
+  findMenu() {
+    return this.orders.reduce((menu, item) => {
+      if (!menu.includes(item.food)) {
+        let order = {food:item.food, price: item.totalCost }
+        menu.push(order)
+      }
+      return menu
+    }, [])
   }
 
 }
 
-export default Hotel;
+export default RoomService;
