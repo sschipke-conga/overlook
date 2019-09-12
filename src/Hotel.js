@@ -16,6 +16,10 @@ class Hotel {
     this.customers.push(this.currentCustomer)
   }
 
+  getTotalRevenueByDate() {
+    
+  }
+
 }
 
 export default Hotel;

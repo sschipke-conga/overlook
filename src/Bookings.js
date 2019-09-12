@@ -1,18 +1,25 @@
 class Bookings {
-  constructor(roomsData, bookingsData) {
-    this.roomsData = roomsData;
+  constructor(roomsData, bookingsData, date) {
+    this.rooms = roomsData;
     this.bookings = bookingsData
-    this.customer;
-    this.availableRooms = null; //method call here
-    this.bookedRooms = null; //method call here
+    this.currentDate = date;
+    this.guest;
+    this.availableRooms = null;
+    this.bookedRooms = null;
   }
 
-  getBookingsByDate() {
+  open(date) {
+    this.getAvailableRoomsByDate(date)
+  } 
 
+  getBookingsByDate(date) {
+    return this.bookings.filter(booking => booking.date === date)
   }
 
-  getAvailableRoomsByDate() {
-
+  getAvailableRoomsByDate(date) { 
+    let bookingsByDate = this.getBookingsByDate(date).map(booking => booking.roomNumber);
+    this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number));
+    return this.availableRooms;
   }
   
   findMostPopularDay() {
