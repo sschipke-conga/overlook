@@ -1,6 +1,7 @@
 class Hotel {
-  constructor(userData) {
+  constructor(userData, today) {
     this.customers = userData;
+    this.currentDate = today;
     this.currentCustomer;
   }
   findCurrentCustomer(name) {

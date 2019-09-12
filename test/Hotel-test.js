@@ -32,6 +32,10 @@ describe('Hotel', () => {
       name: "Noemy Little" })
   })
 
+  it('should have a current date', () => {
+    
+  })
+
   it('should be able to add a new customer', () => {
     hotel.addNewCustomer('Steve Gupta')
     expect(hotel.currentCustomer).to.eql({
