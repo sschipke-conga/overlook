@@ -1,14 +1,18 @@
 class Hotel {
   constructor(userData) {
     this.customers = userData;
-    this.customer = null;
+    this.currentCustomer;
   }
-  findCurrentCustomer() {
-
+  findCurrentCustomer(name) {
+    this.currentCustomer = this.customers.find(user => {
+      return user.name.toLocaleUpperCase().includes(name.toLocaleUpperCase());
+    })
+    return this.currentCustomer;
   }
 
-  addNewCustomer() {
-
+  addNewCustomer(inputName) {
+    this.currentCustomer = { id: (this.customers.length + 1), name: inputName}
+    this.customers.push(this.currentCustomer)
   }
 
 }
