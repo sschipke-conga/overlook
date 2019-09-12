@@ -6,13 +6,6 @@ class Customer {
     this.allRooms = rooms;
     this.orders = orders;
   }
-  findCurrentCustomer() {
-
-  }
-
-  addNewCustomer() {
-
-  }
   getCurrentService() {
 
   }
