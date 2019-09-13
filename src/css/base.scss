@@ -6,9 +6,23 @@
   margin: 0;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  height: 8vh;
+  background-color: $accentColor;
+  margin-left: 5%;
+  margin-bottom: 1.5%;
+}
+
 .tabs {
   margin-left: 5%;
   width: 90%;
+}
+
+img {
+  height: 25%;
+  width: 25%;
 }
 
 ul {
@@ -55,9 +69,10 @@ a {
   border: 1px solid $accentColor;
   border-radius: 0 0 6px 6px;
   border-top: 0;
-  clear: both;
-  height: 85vh;
+  height: 75vh;
   padding: 24px 30px;
-  // position: relative;
   width: 100%;
+  div {
+    display: flex;
+  }
 }
