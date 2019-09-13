@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import './css/base.scss';
-
-import './images/turing-logo.png'
+import './images/reception.svg'
 import Hotel from './Hotel';
 
 let hotel;

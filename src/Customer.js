@@ -1,38 +1,25 @@
 class Customer {
-  constructor(name, bookings, rooms, orders) {
-    this.name = name
+  constructor(id, name, bookings = [], orders = [], rooms = []) {
+    this.id = id;
+    this.name = name;
     this.currentRoom = null;
     this.bookings = bookings;
     this.allRooms = rooms;
     this.orders = orders;
   }
-  getCurrentService() {
+  getCurrentService() {}
 
-  }
+  upgradeRoom() {}
 
-  upgradeRoom() {
+  bookRoom() {}
 
-  }
+  unBookRoom() {}
 
-  bookRoom() {
+  orderRoomService() {}
 
-  }
+  calculateTotalBill() {}
 
-  unBookRoom() {
-
-  }
-
-  orderRoomService() {
-
-  }
-
-  calculateTotalBill() {
-
-  }
-
-  totalRoomServiceByDate() {
-
-  }
+  totalRoomServiceByDate() {}
 }
 
 export default Customer;

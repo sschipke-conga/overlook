@@ -4,12 +4,13 @@ class Bookings {
     this.bookings = bookingsData
     this.currentDate = date;
     this.guest;
-    this.availableRooms = null;
-    this.bookedRooms = null;
+    this.availableRooms;
+    this.bookedRooms;
+    this.bookingRevenue;
   }
 
   open(date) {
-    this.getAvailableRoomsByDate(date)
+    this.findTotalRoomRevenue(date)
   } 
 
   getBookingsByDate(date) {
@@ -35,6 +36,14 @@ class Bookings {
     return this.bookings.filter(booking => booking.userID === id);
   }
 
+  findTotalRoomRevenue(date) {
+    this.getAvailableRoomsByDate(date)
+    let total = this.bookedRooms.reduce((acc, room) => {
+      acc += room.costPerNight;
+      return acc;
+    }, 0)
+    return parseFloat(total.toFixed(2))
+  }
 }
 
 export default Bookings;

@@ -18,14 +18,14 @@ describe('Bookings', () => {
     bookings = new Bookings(sampleRooms, sampleBookings)
   });
 
-    describe('Bookings properties', () => {
-      it('should hold all the rooms', () => {
-        expect(bookings.rooms).to.eql(sampleRooms)
-      });
-      it('should hold all the bookings', () => {
-        expect(bookings.bookings).to.eql(sampleBookings)
-      })
+  describe('Bookings properties', () => {
+    it('should hold all the rooms', () => {
+      expect(bookings.rooms).to.eql(sampleRooms)
+    });
+    it('should hold all the bookings', () => {
+      expect(bookings.bookings).to.eql(sampleBookings)
     })
+  })
 
   it("should get specific bookings by date", () => {
     expect(bookings.getBookingsByDate("2019/10/21")).to.eql([
@@ -41,29 +41,32 @@ describe('Bookings', () => {
     it('should update availableRooms property', () => {
       bookings.getAvailableRoomsByDate("2019/09/16")
       expect(bookings.availableRooms).to.eql(availableRooms);
-  });
-
-  it('should update bookedRooms property', () => {
+    });
+    it('should update bookedRooms property', () => {
       bookings.getAvailableRoomsByDate("2019/09/16")
+      console.log(bookings.bookedRooms)
       expect(bookings.bookedRooms).to.eql([
-      {
-        "bedSize": "king",
-        "bidet": false,
-        "costPerNight": 163.1,
-        "numBeds": 1,
-        "number": 15,
-        "roomType": "suite"
-      },
-      {
-        "bedSize": "queen",
-        "bidet": true,
-        "costPerNight": 174.95,
-        "numBeds": 1,
-        "number": 24,
-        "roomType": "suite"
-      }
-    ]);
-  });
-})
+        {
+          "bedSize": "king",
+          "bidet": false,
+          "costPerNight": 163.1,
+          "numBeds": 1,
+          "number": 15,
+          "roomType": "suite"
+        },
+        {
+          "bedSize": "queen",
+          "bidet": true,
+          "costPerNight": 174.95,
+          "numBeds": 1,
+          "number": 24,
+          "roomType": "suite"
+        }
+      ]);
+    });
+  })
+  it('should return the total revenue of booked rooms', () => {
+    expect(bookings.findTotalRoomRevenue("2019/09/16")).to.equal(338.05);
+  })
 
 })
