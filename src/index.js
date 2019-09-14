@@ -1,9 +1,10 @@
 import $ from 'jquery';
 import './css/base.scss';
-import './images/reception.svg'
-import './images/network.svg'
-import './images/hotel.svg'
-import './images/room-service.svg'
+import './images/reception.svg';
+import './images/network.svg';
+import './images/hotel.svg';
+import './images/room-service.svg';
+import './images/australia-beach.jpg'
 import Hotel from './Hotel';
 
 let hotel;
