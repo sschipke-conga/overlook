@@ -31,8 +31,13 @@ export default {
       });
       return table;
     }
-  }
+  },
 
+
+  displayBoookingStats(dates) {
+    $('.most-booked').after(`<p class="popular"><b>${dates[0].day}</b> with <b>${dates[0].number}</b> bookings</p>`);
+    $('.least-booked').after(`<p class="popular"><b>${dates[1].day}</b> with <b>${dates[1].number}</b> bookings</p>`);
+  }
 
 
 

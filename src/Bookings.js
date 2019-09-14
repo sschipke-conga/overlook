@@ -13,6 +13,7 @@ class Bookings {
   open(date) {
     this.findTotalRoomRevenue(date)
     this.findOccupancy(date)
+    domUpdates.displayBoookingStats(this.findMostAndLeastPopularDay())
   } 
 
   getBookingsByDate(date) {
@@ -25,6 +26,23 @@ class Bookings {
     this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number));
     domUpdates.displayAvailableRooms(this.availableRooms.length )
     return this.availableRooms;
+  }
+
+  findMostAndLeastPopularDay() {
+    let popularBookings = this.bookings.reduce((acc, booking) => {
+      if (!acc[booking.date]) {
+        acc[booking.date] = []
+      }
+      acc[booking.date].push(booking.date)
+      return acc
+    }, {})
+    let dates = Object.keys(popularBookings)
+    let date = dates.sort((a, b) => {
+      return popularBookings[b].length - popularBookings[a].length
+    })
+    let mostAndLeast = [{ day: date[0], number: (popularBookings[date[0]].length) },
+    { day: date[date.length - 1], number: (popularBookings[date[(date.length - 1)]].length) }];
+    return mostAndLeast;
   }
   
   findMostPopularDay() {
