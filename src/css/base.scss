@@ -89,7 +89,7 @@ a {
   border: 1px solid $accentColor;
   border-radius: 0 0 6px 6px;
   border-top: 0;
-  height: 75vh;
+  height: 100%;
   padding: 24px 30px;
   width: 100%;
   div {
@@ -101,7 +101,7 @@ a {
 #main {
   font-size:1.5em;
   h3 {
-    margin: 5%;
+    margin: 2%;
     span {
       font-weight: 300;
     }
@@ -113,4 +113,8 @@ a {
   &:first-child {
     font-weight: 400;
   }
+}
+
+tr {
+  margin: 1%;
 }

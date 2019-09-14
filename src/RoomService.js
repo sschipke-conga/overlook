@@ -1,3 +1,5 @@
+import domUpdates from "./domUpdates";
+
 class RoomService {
   constructor(serviceData) {
     this.orders = serviceData
@@ -7,6 +9,7 @@ class RoomService {
 
   open(date) {
     this.findTotalRevenue(date)
+    this.displayOrders(this.dateOrders)
   }
 
   findOrdersByCustomer(guestID) {
@@ -16,6 +19,7 @@ class RoomService {
   
   findOrdersByDate(date) {
     this.dateOrders = this.orders.filter(order => order.date === date)
+    domUpdates.displayOrders(this.dateOrders)
     return this.dateOrders;
   }
 
