@@ -15,11 +15,12 @@ body {
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 15vh;
-  // background-color: rgba(138, 161, 176, 0.749);
+  background-color: rgba(138, 161, 176, 0.5);
   margin-left: 5%;
   margin-bottom: 1.5%;
+  padding: 8px 0 0 3%;
   width: 90%;
   div {
     display: flex;

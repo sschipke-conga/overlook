@@ -5,6 +5,10 @@ class RoomService {
     this.dateOrders;
   }
 
+  open(date) {
+    this.findTotalRevenue(date)
+  }
+
   findOrdersByCustomer(guestID) {
     return this.orders.filter(orders => orders.userID === guestID)
   

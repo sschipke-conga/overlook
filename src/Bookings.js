@@ -12,6 +12,7 @@ class Bookings {
 
   open(date) {
     this.findTotalRoomRevenue(date)
+    this.findOccupancy(date)
   } 
 
   getBookingsByDate(date) {
@@ -22,7 +23,7 @@ class Bookings {
     let bookingsByDate = this.getBookingsByDate(date).map(booking => booking.roomNumber);
     this.bookedRooms = this.rooms.filter(room => bookingsByDate.includes(room.number))
     this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number));
-    domUpdates.displayAvailableRooms(this.availableRooms)
+    domUpdates.displayAvailableRooms(this.availableRooms.length )
     return this.availableRooms;
   }
   
@@ -34,8 +35,16 @@ class Bookings {
 
   }
 
-  findDataByCustomer(id) {
+  findBookingsByCustomer(id) {
     return this.bookings.filter(booking => booking.userID === id);
+  }
+
+  findRoomsForCustomer(id) {
+  this.findBookingsByCustomer(id).reduce((acc, booking)=>{
+    let matchingRoom = this.rooms.find(room => room.number === booking.roomNumber);
+    acc.push(matchingRoom);
+    return acc;
+  }, [])
   }
 
   findTotalRoomRevenue(date) {
@@ -46,6 +55,11 @@ class Bookings {
     }, 0)
     return parseFloat(total.toFixed(2))
   }
+
+  findOccupancy() {
+    let occupancy = ((this.bookedRooms.length - this.rooms.length) / (this.rooms.length) * 100);
+    domUpdates.displayOccupancy(-occupancy)
+  }
 }
 
-export default Bookings;
+export default Bookings

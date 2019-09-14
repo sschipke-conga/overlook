@@ -1,6 +1,7 @@
 import RoomService from "./RoomService";
 import Customer from "./Customer";
 import Bookings from "./Bookings"
+import domUpdates from "./domUpdates";
 
 class Hotel {
   constructor(userData, roomsData, bookingsData, ordersData, today) {
@@ -10,11 +11,19 @@ class Hotel {
     this.currentDate = today;
     this.currentCustomer;
   }
+
+  open() {
+    this.bookings.open(this.currentDate);
+    this.orders.open(this.currentDate);
+    this.getTotalRevenueByDate()
+  }
+
   findCurrentCustomer(name) {
     let guest = this.customers.find(user => {
       return user.name.toLocaleUpperCase().includes(name.toLocaleUpperCase());
     })
-    this.currentCustomer = new Customer(guest.id, guest.name, this.bookings.findDataByCustomer(guest.id));
+    this.currentCustomer = new Customer(guest.id, guest.name, this.bookings.findBookingByCustomer(guest.id), this.bookings.findRoomsForCustomer(guest.id),
+    this.orders.findOrdersByCustomer(guest.id));
     return this.currentCustomer;
   }
 
@@ -25,7 +34,8 @@ class Hotel {
   }
 
   getTotalRevenueByDate() {
-    return this.bookings.findTotalRoomRevenue(this.currentDate) + this.orders.findTotalRevenue(this.currentDate)
+    let total = this.bookings.findTotalRoomRevenue(this.currentDate) + this.orders.findTotalRevenue(this.currentDate)
+    domUpdates.displayTotalRevenue(total)
   }
 
 }
