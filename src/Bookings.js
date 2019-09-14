@@ -1,8 +1,9 @@
+import domUpdates from "./domUpdates";
+
 class Bookings {
   constructor(roomsData, bookingsData, date) {
     this.rooms = roomsData;
     this.bookings = bookingsData
-    this.currentDate = date;
     this.guest;
     this.availableRooms;
     this.bookedRooms;
@@ -21,6 +22,7 @@ class Bookings {
     let bookingsByDate = this.getBookingsByDate(date).map(booking => booking.roomNumber);
     this.bookedRooms = this.rooms.filter(room => bookingsByDate.includes(room.number))
     this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number));
+    domUpdates.displayAvailableRooms(this.availableRooms)
     return this.availableRooms;
   }
   

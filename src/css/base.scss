@@ -8,7 +8,8 @@
 }
 
 body {
- background: url('./images/australia-beach.jpg');
+  background-image: url("/images/sunset.jpg");
+  background-position: 100% 35%;
   }
 
 
@@ -16,7 +17,7 @@ header {
   display: flex;
   justify-content: space-around;
   height: 15vh;
-  background-color: $accentColor;
+  // background-color: rgba(138, 161, 176, 0.749);
   margin-left: 5%;
   margin-bottom: 1.5%;
   width: 90%;
@@ -63,7 +64,7 @@ ul {
   border-top-right-radius: 6px;
 }
 a {
-  background: #eaeaed;
+  background: hsl(240, 8%, 92%);
   border: 1px solid $accentColor;
   color: $lightBlue;
   display: block;
@@ -83,7 +84,7 @@ a {
 
 
 .tabs-stage {
-  background: $backgroundColor;
+  background: #b4d5ea93;
   border: 1px solid $accentColor;
   border-radius: 0 0 6px 6px;
   border-top: 0;
@@ -92,5 +93,23 @@ a {
   width: 100%;
   div {
     display: flex;
+    flex-direction: column;
+  }
+}
+
+#main {
+  font-size:1.5em;
+  h3 {
+    margin: 5%;
+    span {
+      font-weight: 300;
+    }
+    #main-date {
+  display: block;
+  font-weight: 700; 
+}
+  }
+  &:first-child {
+    font-weight: 400;
   }
 }

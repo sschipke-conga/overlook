@@ -1,23 +1,31 @@
+import RoomService from "./RoomService";
+import Customer from "./Customer";
+import Bookings from "./Bookings"
+
 class Hotel {
-  constructor(userData, today) {
+  constructor(userData, roomsData, bookingsData, ordersData, today) {
+    this.bookings = new Bookings(roomsData, bookingsData)
+    this.orders = new RoomService(ordersData)
     this.customers = userData;
     this.currentDate = today;
     this.currentCustomer;
   }
   findCurrentCustomer(name) {
-    this.currentCustomer = this.customers.find(user => {
+    let guest = this.customers.find(user => {
       return user.name.toLocaleUpperCase().includes(name.toLocaleUpperCase());
     })
+    this.currentCustomer = new Customer(guest.id, guest.name, this.bookings.findDataByCustomer(guest.id));
     return this.currentCustomer;
   }
 
   addNewCustomer(inputName) {
-    this.currentCustomer = { id: (this.customers.length + 1), name: inputName}
-    this.customers.push(this.currentCustomer)
+    let guest = { id: (this.customers.length + 1), name: inputName};
+    this.currentCustomer = new Customer(guest.id, guest.name)
+    this.customers.push(guest);
   }
 
   getTotalRevenueByDate() {
-    
+    return this.bookings.findTotalRoomRevenue(this.currentDate) + this.orders.findTotalRevenue(this.currentDate)
   }
 
 }

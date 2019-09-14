@@ -39,6 +39,12 @@ describe('RoomService', () => {
         date: "2019/09/06",
         food: "Practical Concrete Sandwich",
         totalCost: 11.49
+      },
+      {
+        userID: 19,
+        date: "2019/09/06",
+        food: "Awesome Metal Sandwich",
+        totalCost: 12.56
       }
     ]);
   })
@@ -65,4 +71,7 @@ describe('RoomService', () => {
   { food: 'Awesome Metal Sandwich', price: 12.56 }
 ])
   });
+  it('should find total revenue for a day', () => {
+    expect(roomService.findTotalRevenue('2019/09/06')).to.equal(24.05)
+  })
 });

@@ -115,7 +115,7 @@ const sampleRoomService = [
   },
   {
     userID: 19,
-    date: "2019/09/21",
+    date: "2019/09/06",
     food: "Awesome Metal Sandwich",
     totalCost: 12.56
   }

@@ -4,16 +4,18 @@ import './images/reception.svg';
 import './images/network.svg';
 import './images/hotel.svg';
 import './images/room-service.svg';
-import './images/australia-beach.jpg'
+import './images/sunset.jpg'
 import Hotel from './Hotel';
 
 let hotel;
 let today = getCurrentDate();
-console.log(today)
-let usersFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users').then(data => data.json()).then(data => makeHotel(data.users))
-let roomsFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(data => data.json());
-let bookingsFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(data => data.json()).then(data => console.log(data.bookings));
-let roomServicesFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices');
+
+Promise.all([
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users').then(response => response.json()),
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices').then(response => response.json()),
+]).then(data => hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, today)).then(data => console.table(hotel))
 
 const makeHotel = (data) => {
   hotel = new Hotel(data);

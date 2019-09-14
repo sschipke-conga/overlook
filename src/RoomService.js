@@ -1,6 +1,8 @@
 class RoomService {
   constructor(serviceData) {
     this.orders = serviceData
+    this.menu;
+    this.dateOrders;
   }
 
   findOrdersByCustomer(guestID) {
@@ -9,17 +11,27 @@ class RoomService {
   }
   
   findOrdersByDate(date) {
-    return this.orders.filter(order => order.date === date)
+    this.dateOrders = this.orders.filter(order => order.date === date)
+    return this.dateOrders;
+  }
+
+  findTotalRevenue(date) {
+    this.findOrdersByDate(date);
+    return this.dateOrders.reduce((bill, order) => {
+      bill += order.totalCost;
+      return bill
+    }, 0)
   }
 
   findMenu() {
-    return this.orders.reduce((menu, item) => {
+    this.menu = this.orders.reduce((menu, item) => {
       if (!menu.includes(item.food)) {
-        let order = {food:item.food, price: item.totalCost }
+        let order = {food: item.food, price: item.totalCost }
         menu.push(order)
       }
       return menu
-    }, [])
+    }, []);
+    return this.menu
   }
 
 }

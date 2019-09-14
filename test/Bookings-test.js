@@ -44,7 +44,6 @@ describe('Bookings', () => {
     });
     it('should update bookedRooms property', () => {
       bookings.getAvailableRoomsByDate("2019/09/16")
-      console.log(bookings.bookedRooms)
       expect(bookings.bookedRooms).to.eql([
         {
           "bedSize": "king",

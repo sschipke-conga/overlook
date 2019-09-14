@@ -1,5 +1,5 @@
 class Customer {
-  constructor(id, name, bookings = [], orders = [], rooms = []) {
+  constructor(id, name, bookings = [], rooms = [], orders = []) {
     this.id = id;
     this.name = name;
     this.currentRoom = null;
