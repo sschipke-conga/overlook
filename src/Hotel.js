@@ -18,11 +18,9 @@ class Hotel {
     this.getTotalRevenueByDate()
   }
 
-  findCurrentCustomer(name) {
-    let guest = this.customers.find(user => {
-      return user.name.toLocaleUpperCase().includes(name.toLocaleUpperCase());
-    })
-    this.currentCustomer = new Customer(guest.id, guest.name, this.bookings.findBookingByCustomer(guest.id), this.bookings.findRoomsForCustomer(guest.id),
+  findCurrentCustomer(id) {
+    let guest = this.customers.find(user => user.id === id)
+    this.currentCustomer = new Customer(guest.id, guest.name, this.bookings.findBookingsByCustomer(guest.id), this.bookings.findRoomsForCustomer(guest.id),
     this.orders.findOrdersByCustomer(guest.id));
     return this.currentCustomer;
   }

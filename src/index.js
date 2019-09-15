@@ -21,7 +21,14 @@ Promise.all([
 
 let $earchInput = $('#customer-search');
 
-$earchInput.keyup(searchCustomers)
+
+$earchInput.keyup(searchCustomers);
+
+$('.search').click(e => {
+  handleCustomerClick(e)
+})
+
+
 
 
 $('#main-date').text(displayCurrentDate())
@@ -56,11 +63,20 @@ let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
 
 function searchCustomers() {
   let $results = $('.search-results')
-  console.log($earchInput)
-  if (!$earchInput.value) {
+  console.log($earchInput.val())
+  if ($earchInput.val() === '') {
     $results.empty();
-  }
+  } else {
   $results.empty();
   let searchGuests = hotel.customers.filter(guest => guest.name.toLowerCase().includes($earchInput.val().toLowerCase()));
   $results.append(`${domUpdates.displaySearchGuests(searchGuests)}</ul>`)
+  }
+}
+
+const handleCustomerClick = (e) => {
+  if (e.target.classList.contains('searched')) {
+    let id = parseInt(e.target.dataset.id);
+    hotel.findCurrentCustomer(id);
+    console.table(hotel.currentCustomer)
+  }
 }
