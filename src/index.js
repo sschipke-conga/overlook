@@ -76,6 +76,7 @@ const handleCustomerClick = (e) => {
   if (e.target.classList.contains('searched')) {
     let id = parseInt(e.target.dataset.id);
     hotel.findCurrentCustomer(id).open();
-
+    $('.search-results').empty();
+    $earchInput.val('');
   }
 }

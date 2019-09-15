@@ -26,6 +26,9 @@ header {
     display: flex;
     flex-direction: column;
   }
+  .display-customer {
+    align-items:  center;
+  }
   iframe {
     width: 50%;
     .default-small-logo  {
@@ -145,10 +148,21 @@ a {
       }
     }
   }
-}
+};
 
-tr {
-  margin: 1%;
+table{
+  margin-top: 2%;
+  text-align: center; 
+  th {
+    width: 50%;
+  }
+  td {
+    width: 50%;
+  }
+  tr {
+    margin: 1%;
+    width: 50%;
+  }
 }
 
 .section-popular {

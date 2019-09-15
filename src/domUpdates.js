@@ -68,6 +68,7 @@ export default {
     
   showCustomerBookings(name, bookings) {
     let $ection = $('.section-popular');
+    $ection.empty();
     $ection.after(`
       <h3 class="heading-bookings">Here are all bookings for ${name}: </h3>
       ${makeBookings()} </table>
@@ -84,6 +85,14 @@ export default {
       })
       return table;
     }
+  },
+  
+  displayName(name) {
+    $('h1').after(`
+    <div class="display-customer">
+      <h4 class="current-cutomer-header">Current Guest:</h4>
+      <h3 class="current-customer">${name}</h3>
+    </div>`)
   }
 
 }
