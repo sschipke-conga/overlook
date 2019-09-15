@@ -151,6 +151,9 @@ tr {
   margin: 1%;
 }
 
-.popular {
-  margin: 2%;
+.section-popular {
+  display: flex;
+  .popular {
+    margin: 2%;
+  }
 }

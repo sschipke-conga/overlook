@@ -63,12 +63,28 @@ export default {
         </tr>`
       })
       return table;
-    }  
+    }
+  },
+    
+  showCustomerBookings(name, bookings) {
+    let $ection = $('.section-popular');
+    $ection.after(`
+      <h3 class="heading-bookings">Here are all bookings for ${name}: </h3>
+      ${makeBookings()} </table>
+        <button type="button" class="make-booking"> Make a new Booking</button>`);
+    function makeBookings() {
+      let table = `<table class="bookings-table">
+        <tr>
+          <th>Date:</th><th>Room Number</th>
+        </tr>`;
+      bookings.forEach(booking => {
+        table += `<tr>
+          <td>${booking.date}</td><td>${booking.roomNumber}</td>
+          </tr>`
+      })
+      return table;
+    }
   }
 
-
-
-
-
-
 }
+

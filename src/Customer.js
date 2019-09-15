@@ -11,7 +11,8 @@ class Customer {
   }
 
   open() {
-    domUpdates.showCustomerOrders(this.name, this.orders)
+    domUpdates.showCustomerOrders(this.name, this.orders);
+    domUpdates.showCustomerBookings(this.name, this.bookings);
   }
 
   getCurrentService() {}
