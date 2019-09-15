@@ -63,7 +63,6 @@ let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
 
 function searchCustomers() {
   let $results = $('.search-results')
-  console.log($earchInput.val())
   if ($earchInput.val() === '') {
     $results.empty();
   } else {
@@ -76,7 +75,7 @@ function searchCustomers() {
 const handleCustomerClick = (e) => {
   if (e.target.classList.contains('searched')) {
     let id = parseInt(e.target.dataset.id);
-    hotel.findCurrentCustomer(id);
-    console.table(hotel.currentCustomer)
+    hotel.findCurrentCustomer(id).open();
+
   }
 }

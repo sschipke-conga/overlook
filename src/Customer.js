@@ -1,3 +1,5 @@
+import domUpdates from "./domUpdates";
+
 class Customer {
   constructor(id, name, bookings = [], rooms = [], orders = []) {
     this.id = id;
@@ -7,6 +9,11 @@ class Customer {
     this.allRooms = rooms;
     this.orders = orders;
   }
+
+  open() {
+    domUpdates.showCustomerOrders(this.name, this.orders)
+  }
+
   getCurrentService() {}
 
   upgradeRoom() {}

@@ -15,7 +15,7 @@ export default {
   },
 
   displayOrders(orders) {
-    $('#orders').append(`
+    $('.show-orders').append(`
     ${makeOrders()} </table>`)
     function makeOrders() {
       let table = `<table class= "table-orders" >
@@ -45,6 +45,25 @@ export default {
       list += `<li class="searched" data-id="${guest.id}"> ${guest.name} </li>`
     })
     return list;
+  },
+
+  showCustomerOrders(name, orders) {
+    let $orders = $('.show-orders');
+    $orders.empty();
+    $('.orders--h3').text(`Here are the orders for ${name}:`)
+    $orders.append(`<table class="cusom-orders">
+    ${showOrders(orders)} </table> `)
+    function showOrders() {
+      let table = `<tr>
+      <th>Date</th><th>Item</th><th>Price</th>
+    </tr>`;
+      orders.forEach(order => {
+        table += `<tr>
+        <td>${order.date}</td><td>${order.food}</td><td>${order.totalCost}</td>
+        </tr>`
+      })
+      return table;
+    }  
   }
 
 
