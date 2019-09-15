@@ -1,7 +1,7 @@
 import domUpdates from "./domUpdates";
 
 class Bookings {
-  constructor(roomsData, bookingsData, date) {
+  constructor(roomsData, bookingsData) {
     this.rooms = roomsData;
     this.bookings = bookingsData
     this.guest;
@@ -43,14 +43,6 @@ class Bookings {
     let mostAndLeast = [{ day: date[0], number: (popularBookings[date[0]].length) },
     { day: date[date.length - 1], number: (popularBookings[date[(date.length - 1)]].length) }];
     return mostAndLeast;
-  }
-  
-  findMostPopularDay() {
-
-  }
-
-  findLeastPopularDay() {
-
   }
 
   findBookingsByCustomer(id) {

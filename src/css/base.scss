@@ -53,6 +53,11 @@ ul {
   width: 60%;
 }
 
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
 .tabs-nav li {
   text-decoration: none;
   width: 50%;
@@ -112,6 +117,33 @@ a {
   }
   &:first-child {
     font-weight: 400;
+  }
+}
+
+#customer {
+  .search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  input {
+    margin-top: 2%;
+    padding: 10px;
+    width: 18%;
+  }
+  .search-results {
+    li {
+      margin-top: 5%;
+      width: 100%;
+      background: #b4d5ea93;
+      border: 2px solid black;
+      border-radius: 4px;
+      font-size: 1.1em;
+      padding: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
 

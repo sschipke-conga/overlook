@@ -37,6 +37,14 @@ export default {
   displayBoookingStats(dates) {
     $('.most-booked').after(`<p class="popular"><b>${dates[0].day}</b> with <b>${dates[0].number}</b> bookings</p>`);
     $('.least-booked').after(`<p class="popular"><b>${dates[1].day}</b> with <b>${dates[1].number}</b> bookings</p>`);
+  },
+
+  displaySearchGuests(guests) {
+    let list = `<ul class="search-list"></ul>`
+    guests.forEach(guest => {
+      list += `<li class="searched" data-id="${guest.id}"> ${guest.name} </li>`
+    })
+    return list;
   }
 
 

@@ -7,6 +7,7 @@ import './images/room-service.svg';
 import './images/sunset.jpg'
 import domUpdates from './domUpdates'
 import Hotel from './Hotel';
+import { stringify } from 'querystring';
 
 let hotel;
 let today = getCurrentDate();
@@ -18,10 +19,9 @@ Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices').then(response => response.json()),
 ]).then(data => hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, today)).then(data => hotel.open())
 
-const makeHotel = (data) => {
-  hotel = new Hotel(data);
-  console.log(hotel)
-}
+let $earchInput = $('#customer-search');
+
+$earchInput.keyup(searchCustomers)
 
 
 $('#main-date').text(displayCurrentDate())
@@ -52,4 +52,15 @@ function displayCurrentDate() {
   let date = new Date()
 let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
   return date.toLocaleDateString("en-US", options);
+}
+
+function searchCustomers() {
+  let $results = $('.search-results')
+  console.log($earchInput)
+  if (!$earchInput.value) {
+    $results.empty();
+  }
+  $results.empty();
+  let searchGuests = hotel.customers.filter(guest => guest.name.toLowerCase().includes($earchInput.val().toLowerCase()));
+  $results.append(`${domUpdates.displaySearchGuests(searchGuests)}</ul>`)
 }
