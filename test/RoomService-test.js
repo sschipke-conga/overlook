@@ -5,16 +5,18 @@ chai.use(spies);
 
 import RoomService from '../src/RoomService'
 import sampleRoomService from '../test/sampleRoomService'
-// import domUpdates from '../src/domUpdates'
+import domUpdates from '../src/domUpdates'
 
-// chai.spy.on(domUpdates, [array of methods])
 
 describe('RoomService', () => {
-  // let needed variables be DECLARED here
   let roomService;
   beforeEach(() => {
-    roomService = new RoomService(sampleRoomService)
+    roomService = new RoomService(sampleRoomService);
+    chai.spy.on(domUpdates, ['displayOrders'], () => {})
   });
+  afterEach(() => {
+    chai.spy.restore(domUpdates)
+  })
 
   it('should be able to get orders for a specifict customer', () => {
     expect(roomService.findOrdersByCustomer(3)).to.eql([
@@ -73,5 +75,10 @@ describe('RoomService', () => {
   });
   it('should find total revenue for a day', () => {
     expect(roomService.findTotalRevenue('2019/09/06')).to.equal(24.05)
+  });
+
+  it('should be able open and display results', () => {
+    roomService.open('2019/09/06');
+    expect(domUpdates.displayOrders).to.have.been.called(1)
   })
 });

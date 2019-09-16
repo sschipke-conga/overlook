@@ -11,10 +11,9 @@ import domUpdates from '../src/domUpdates'
 
 
 describe('Bookings', () => {
-  // let needed variables be DECLARED here
   let bookings;
   beforeEach(() => {
-    chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => { })
+    chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => {})
     bookings = new Bookings(sampleRooms, sampleBookings)
   });
   afterEach(() => {
