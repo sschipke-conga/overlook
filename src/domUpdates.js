@@ -67,11 +67,14 @@ const domUpdates = {
   },
     
   showCustomerBookings(name, bookings) {
+    $('#rooms').css("flex-direction", "row");
     let $ection = $('.section-popular');
     $ection.html('');
     $ection.append(`
       <h3 class="heading-bookings">Here are all bookings for ${name}: </h3>
-      ${makeBookings()} </table>
+      <section class="section-bookings-table">
+        ${makeBookings()} </table>
+      </section>
       <button type="button" class="make-booking"> Make a new Booking</button>
         `);
     function makeBookings() {

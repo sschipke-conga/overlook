@@ -29,6 +29,10 @@ $('.search').click(e => {
   makeNewCustomer(e)
 })
 
+$('.section-popular').click(e  => {
+  handleMakeNewBooking(e)
+})
+
 
 
 
@@ -106,4 +110,26 @@ const makeNewCustomer = (e) => {
     $('.add-customer-section').remove();
     console.log(hotel.customers)
   }
+}
+
+const handleMakeNewBooking = (e) => {
+  if (e.target.classList.contains('make-booking')) {
+    $('#rooms').append(`<section class="available-rooms">
+    <h3 class="h3-available-rooms">Here are the available Rooms: </h3>
+    ${showAvailableRooms()}</ul></section>`)
+
+  }
+}
+
+function showAvailableRooms() {
+
+  let availableRooms = `<ul class="available-rooms">`;
+  hotel.bookings.availableRooms.forEach(room => {
+    availableRooms += `
+    <h5> Room: ${room.number}, ${room.roomType.toUpperCase()}, $${room.costPerNight}</h5>
+    <h6>-BED:${room.bedSize}, Quantity: ${room.numBeds}, bidet:${room.bidet}</h6>
+    <button class="book-room" id="${room.number}">Book this room</button>
+    `
+  })
+  return availableRooms
 }
