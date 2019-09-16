@@ -166,9 +166,27 @@ table{
   }
 }
 
+#rooms {
+  align-items: center;
 .section-popular {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    background: #76bce893;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 1.1em;
+    height: 35px;
+    margin-top: 1%;
+    width: 60%;
+    &:hover {
+      background-color: #ff6d92;
+      cursor: pointer;
+    }
+  }
   .popular {
     margin: 2%;
   }
+}
 }

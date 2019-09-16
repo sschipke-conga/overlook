@@ -25,7 +25,8 @@ let $earchInput = $('#customer-search');
 $earchInput.keyup(searchCustomers);
 
 $('.search').click(e => {
-  handleCustomerClick(e)
+  handleCustomerClick(e);
+  makeNewCustomer(e)
 })
 
 
@@ -66,9 +67,14 @@ function searchCustomers() {
   if ($earchInput.val() === '') {
     $results.empty();
   } else {
-  $results.empty();
-  let searchGuests = hotel.customers.filter(guest => guest.name.toLowerCase().includes($earchInput.val().toLowerCase()));
-  $results.append(`${domUpdates.displaySearchGuests(searchGuests)}</ul>`)
+    $results.empty();
+    var searchGuests = hotel.customers.filter(guest => guest.name.toLowerCase().includes($earchInput.val().toLowerCase()))
+};
+  if (!searchGuests || !searchGuests.length) {
+    $results.empty();
+    makeNewCustomerPrompt()
+  } else {
+    $results.append(`${domUpdates.displaySearchGuests(searchGuests)}</ul>`)
   }
 }
 
@@ -78,5 +84,26 @@ const handleCustomerClick = (e) => {
     hotel.findCurrentCustomer(id).open();
     $('.search-results').empty();
     $earchInput.val('');
+  }
+}
+
+function makeNewCustomerPrompt() {
+  $('.search-results').append(`
+  <section class="add-customer-section">
+    <p class="add-customer-prompt">No matching customer found. Please add a new customer below: </p>
+    <input type="text" class="add-customer-input" placeholder="Enter new customer name">
+    <button type="button" class="add-customer-button">Make New Customer</button>
+  </section>`)
+}
+
+const makeNewCustomer = (e) => {
+  let $addInput = $('.add-customer-input');
+  if ($addInput.val() !== '' && e.target.classList.contains('add-customer-button')) {
+    hotel.addNewCustomer($addInput.val());
+    hotel.currentCustomer.open();
+    $addInput.val('');
+    $earchInput.val('');
+    $('.add-customer-section').remove();
+    console.log(hotel.customers)
   }
 }

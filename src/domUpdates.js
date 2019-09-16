@@ -49,7 +49,7 @@ const domUpdates = {
 
   showCustomerOrders(name, orders) {
     let $orders = $('.show-orders');
-    $orders.empty();
+    $orders.html('');
     $('.orders--h3').text(`Here are the orders for ${name}:`)
     $orders.append(`<table class="cusom-orders">
     ${showOrders(orders)} </table> `)
@@ -68,11 +68,12 @@ const domUpdates = {
     
   showCustomerBookings(name, bookings) {
     let $ection = $('.section-popular');
-    $ection.empty();
-    $ection.after(`
+    $ection.html('');
+    $ection.append(`
       <h3 class="heading-bookings">Here are all bookings for ${name}: </h3>
       ${makeBookings()} </table>
-        <button type="button" class="make-booking"> Make a new Booking</button>`);
+      <button type="button" class="make-booking"> Make a new Booking</button>
+        `);
     function makeBookings() {
       let table = `<table class="bookings-table">
         <tr>
@@ -88,11 +89,12 @@ const domUpdates = {
   },
   
   displayName(name) {
+    $('.display-customer').remove();
     $('h1').after(`
     <div class="display-customer">
       <h4 class="current-cutomer-header">Current Guest:</h4>
       <h3 class="current-customer">${name}</h3>
-    </div>`)
+    </div>`);
   }
 
 }
