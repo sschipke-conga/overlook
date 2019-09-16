@@ -1,9 +1,8 @@
 import domUpdates from "./domUpdates";
 
 class Customer {
-  constructor(id, name, bookings = [], rooms = [], orders = []) {
-    this.id = id;
-    this.name = name;
+  constructor(guest, bookings = [], rooms = [], orders = []) {
+    Object.assign(this, guest);
     this.currentRoom = null;
     this.bookings = bookings;
     this.allRooms = rooms;

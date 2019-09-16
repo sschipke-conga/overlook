@@ -4,10 +4,10 @@ const spies = require('chai-spies');
 chai.use(spies);
 
 import Hotel from '../src/Hotel'
-// import userData from '../test/userData'
-// import domUpdates from '../src/domUpdates'
+import domUpdates from '../src/domUpdates'
 
-// chai.spy.on(domUpdates, [array of methods])
+chai.spy.on(domUpdates, ['displayTotalRevenue '])
+
 const users = [{ id: 1, name: "Matilde Larson" },
   { id: 2, name: "Chadrick Lowe" },
   { id: 3, name: "Christian Sporer" },
@@ -27,21 +27,21 @@ describe('Hotel', () => {
   });
 
   it('should be able to find a current customer', () => {
-    hotel.findCurrentCustomer('Noemy')
+    hotel.findCurrentCustomer(6)
     expect(hotel.currentCustomer).to.eql({ id: 5, 
       name: "Noemy Little" })
-  })
+  });
 
-  it('should have a current date', () => {
+  it('should get the to', () => {
     
-  })
+  });
 
   it('should be able to add a new customer', () => {
     hotel.addNewCustomer('Steve Gupta')
     expect(hotel.currentCustomer).to.eql({
       id: 11,
       name: "Steve Gupta"
-    })
+    });
   })
 
 });

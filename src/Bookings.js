@@ -67,8 +67,9 @@ class Bookings {
   }
 
   findOccupancy() {
-    let occupancy = ((this.bookedRooms.length - this.rooms.length) / (this.rooms.length) * 100);
-    domUpdates.displayOccupancy(-occupancy)
+    let occupancy = ((this.bookedRooms.length) / (this.rooms.length) * 100);
+    domUpdates.displayOccupancy(occupancy)
+    return occupancy;
   }
 }
 

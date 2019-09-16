@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-export default {
+const domUpdates = {
 
   displayAvailableRooms(rooms) {
     $('#rooms-today').text(`${rooms}`)
@@ -97,3 +97,4 @@ export default {
 
 }
 
+export default domUpdates

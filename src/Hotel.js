@@ -15,12 +15,12 @@ class Hotel {
   open() {
     this.bookings.open(this.currentDate);
     this.orders.open(this.currentDate);
-    this.getTotalRevenueByDate()
+    this.getTotalRevenueByDate();
   }
 
   findCurrentCustomer(id) {
     let guest = this.customers.find(user => user.id === id)
-    this.currentCustomer = new Customer(guest.id, guest.name, this.bookings.findBookingsByCustomer(guest.id), this.bookings.findRoomsForCustomer(guest.id),
+    this.currentCustomer = new Customer(guest, this.bookings.findBookingsByCustomer(guest.id), this.bookings.findRoomsForCustomer(guest.id),
     this.orders.findOrdersByCustomer(guest.id));
     return this.currentCustomer;
   }
