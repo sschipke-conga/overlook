@@ -3,7 +3,6 @@ import domUpdates from "./domUpdates";
 class Customer {
   constructor(guest, bookings = [], rooms = [], orders = []) {
     Object.assign(this, guest);
-    this.currentRoom = null;
     this.bookings = bookings;
     this.allRooms = rooms;
     this.orders = orders;

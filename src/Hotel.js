@@ -27,7 +27,7 @@ class Hotel {
 
   addNewCustomer(inputName) {
     let guest = { id: (this.customers.length + 1), name: inputName};
-    this.currentCustomer = new Customer(guest.id, guest.name)
+    this.currentCustomer = new Customer(guest)
     this.customers.push(guest);
   }
 

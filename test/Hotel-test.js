@@ -42,6 +42,7 @@ describe('Hotel', () => {
       id: 11,
       name: "Steve Gupta"
     });
-  })
+    expect(hotel.customers.length).to.equal(11)
+    })
 
 });

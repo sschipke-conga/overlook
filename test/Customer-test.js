@@ -1,4 +1,5 @@
 import chai from 'chai';
+import domUpdates from '../src/domUpdates'
 const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
@@ -36,9 +37,51 @@ let orders = [
 
 
 describe('Customer', () => {
-  // let needed variables be DECLARED here
   let guest;
   beforeEach(() => {
-    guest = new Customer(person.id, person.name, bookings, orders )
+    guest = new Customer(person, bookings, 0, orders);
+    chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => { })
   });
+  afterEach(() => {
+    chai.spy.restore(domUpdates)
+  }) 
+  describe('customer properties', () => {
+    it('should have a name', () => {
+      expect(guest.name).to.equal('Brook Christiansen')
+    });
+    it('should have an id', () => {
+      expect(guest.id).to.equal(4)
+    });
+    it('should have all past bookings', () => {
+      expect(guest.bookings).to.eql([
+        { userID: 4, date: "2019/09/18", roomNumber: 36 },
+        { userID: 4, date: "2019/08/09", roomNumber: 50 },
+        { userID: 4, date: "2019/10/04", roomNumber: 7 },
+        { userID: 4, date: "2019/10/02", roomNumber: 30 },
+        { userID: 4, date: "2019/10/19", roomNumber: 15 },
+        { userID: 4, date: "2019/09/22", roomNumber: 10 },
+        { userID: 4, date: "2019/10/02", roomNumber: 20 },
+        { userID: 4, date: "2019/10/11", roomNumber: 48 },
+        { userID: 4, date: "2019/07/28", roomNumber: 18 },
+        { userID: 4, date: "2019/08/10", roomNumber: 6 }
+      ])
+    });
+    it('should have all past orders', () => {
+      expect(guest.orders).to.eql([
+        {
+          userID: 4,
+          date: "2019/09/08",
+          food: "Sleek Steel Sandwich",
+          totalCost: 12.79
+        },
+        {
+          userID: 4,
+          date: "2019/09/06",
+          food: "Practical Concrete Sandwich",
+          totalCost: 11.49
+        }
+      ])
+    })
+  });
+
 });
