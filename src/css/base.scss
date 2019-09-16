@@ -17,10 +17,9 @@ header {
   display: flex;
   justify-content: space-between;
   height: 15vh;
-  background-color: rgba(138, 161, 176, 0.5);
   margin-left: 5%;
   margin-bottom: 1.5%;
-  padding: 8px 0 0 3%;
+  padding: 50px 0 0 3%;
   width: 90%;
   div {
     display: flex;
@@ -176,12 +175,19 @@ table{
   }
 }
 
+#orders {
+  table {
+    width: 65%;
+  }
+}
+
 #rooms {
   align-items: center;
 .section-popular {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40%;
   .section-bookings-table {
     max-height: 45vh;
       overflow: scroll;
@@ -198,7 +204,7 @@ table{
     font-size: 1.1em;
     height: 35px;
     margin-top: 2%;
-    width: 60%;
+    width: 70%;
     &:hover {
       background-color: #ff6d92;
       cursor: pointer;
@@ -211,12 +217,15 @@ table{
   .available-rooms {
       display: flex;
       flex-direction: column;
-      overflow: scroll;
       overflow-x: hidden;
+      margin-left: 10px;
       max-height: 47vh;
-      width: 100%;
+      width: 60%;
       button {
         width: 100px;
+        &:hover {
+          cursor: pointer;
+        }
       }
       }
 }

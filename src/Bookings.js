@@ -50,7 +50,7 @@ class Bookings {
   }
 
   findRoomsForCustomer(id) {
-  this.findBookingsByCustomer(id).reduce((acc, booking)=>{
+  return this.findBookingsByCustomer(id).reduce((acc, booking)=>{
     let matchingRoom = this.rooms.find(room => room.number === booking.roomNumber);
     acc.push(matchingRoom);
     return acc;

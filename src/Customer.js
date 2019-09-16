@@ -5,6 +5,7 @@ class Customer {
     Object.assign(this, guest);
     this.bookings = bookings;
     this.allRooms = rooms;
+    this.currentRoom;
     this.orders = orders;
   }
 
@@ -12,30 +13,46 @@ class Customer {
     domUpdates.showCustomerOrders(this.name, this.orders);
     domUpdates.showCustomerBookings(this.name, this.bookings);
     domUpdates.displayName(this.name)
+    domUpdates.displayBills(this.name, this.calculateTotalBookingsBill(), this.calculateTotalRoomService(), this.calculateTotalBill());
   }
 
   getCurrentService() {}
 
-  upgradeRoom() {}
+  bookRoom(roomNumber, bookings, day) {
+      let index = bookings.availableRooms.findIndex(room => room.number === roomNumber);
+      let newRoom = bookings.availableRooms.splice(index, 1);
+      bookings.bookedRooms.push(newRoom);
+      this.currentRoom = newRoom;
+    let booking = { userID: this.id, date: day, roomNumber: this.currentRoom.roomNumber }
+    this.bookings.push(booking);
+    this.allRooms.push(newRoom)
+    bookings.bookings.push(booking);
+  }
 
-  bookRoom() {}
+  unBookRoom() {
 
-  unBookRoom() {}
+  }
 
   orderRoomService() {}
 
   calculateTotalRoomService() {
-    let serviceBill = this.orders.reduce((bill, order) => bill += order.totalCost)
+    let serviceBill = this.orders.reduce((bill, order) => {
+      bill += order.totalCost;
+      return bill;
+    }, 0)
     return serviceBill
   }
 
   calculateTotalBookingsBill() {
-    let bookingsBill = this.allRooms.reduce((bill, room) => bill += room.costPerNight)
+    let bookingsBill = this.allRooms.reduce((bill, room) => {
+      bill += room.costPerNight
+    return bill;
+    },0)
     return bookingsBill
   }
 
   calculateTotalBill() {
-    return this.calculateTotalRoomService() + this.calculateTotalBookingsBill();
+    return (this.calculateTotalRoomService() + this.calculateTotalBookingsBill())
   }
 }
 

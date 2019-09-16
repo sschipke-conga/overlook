@@ -20,6 +20,7 @@ Promise.all([
 ]).then(data => hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, today)).then(data => hotel.open())
 
 let $earchInput = $('#customer-search');
+let $Rooms = $('#rooms');
 
 
 $earchInput.keyup(searchCustomers);
@@ -29,11 +30,10 @@ $('.search').click(e => {
   makeNewCustomer(e)
 })
 
-$('.section-popular').click(e  => {
-  handleMakeNewBooking(e)
+$Rooms.click(e  => {
+  handleMakeNewBooking(e);
+  makeNewBooking(e);
 })
-
-
 
 
 $('#main-date').text(displayCurrentDate())
@@ -62,7 +62,7 @@ function getCurrentDate() {
 
 function displayCurrentDate() {
   let date = new Date()
-let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
+  let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
   return date.toLocaleDateString("en-US", options);
 }
 
@@ -73,7 +73,7 @@ function searchCustomers() {
   } else {
     $results.empty();
     var searchGuests = hotel.customers.filter(guest => guest.name.toLowerCase().includes($earchInput.val().toLowerCase()))
-};
+}
   if (!searchGuests || !searchGuests.length) {
     $results.empty();
     makeNewCustomerPrompt()
@@ -114,22 +114,29 @@ const makeNewCustomer = (e) => {
 
 const handleMakeNewBooking = (e) => {
   if (e.target.classList.contains('make-booking')) {
-    $('#rooms').append(`<section class="available-rooms">
+    $Rooms.append(`<section class="section-available-rooms">
     <h3 class="h3-available-rooms">Here are the available Rooms: </h3>
     ${showAvailableRooms()}</ul></section>`)
-
   }
 }
 
 function showAvailableRooms() {
-
   let availableRooms = `<ul class="available-rooms">`;
   hotel.bookings.availableRooms.forEach(room => {
     availableRooms += `
     <h5> Room: ${room.number}, ${room.roomType.toUpperCase()}, $${room.costPerNight}</h5>
-    <h6>-BED:${room.bedSize}, Quantity: ${room.numBeds}, bidet:${room.bidet}</h6>
+    <h6>- bed: ${room.bedSize.toUpperCase()}, Quantity: ${room.numBeds}, bidet: ${room.bidet}</h6>
     <button class="book-room" id="${room.number}">Book this room</button>
     `
   })
   return availableRooms
+}
+
+function makeNewBooking(e) {
+  if (e.target.classList.contains('book-room')) {
+    let roomNumber = parseInt(e.target.id);
+    hotel.currentCustomer.bookRoom(roomNumber, hotel.bookings, today);
+    e.target.closest('.section-available-rooms').remove();
+    // $Rooms.append(``)
+  }
 }
