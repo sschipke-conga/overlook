@@ -24,9 +24,19 @@ class Customer {
 
   orderRoomService() {}
 
-  calculateTotalBill() {}
+  calculateTotalRoomService() {
+    let serviceBill = this.orders.reduce((bill, order) => bill += order.totalCost)
+    return serviceBill
+  }
 
-  totalRoomServiceByDate() {}
+  calculateTotalBookingsBill() {
+    let bookingsBill = this.allRooms.reduce((bill, room) => bill += room.costPerNight)
+    return bookingsBill
+  }
+
+  calculateTotalBill() {
+    return this.calculateTotalRoomService() + this.calculateTotalBookingsBill();
+  }
 }
 
 export default Customer;

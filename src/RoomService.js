@@ -10,6 +10,7 @@ class RoomService {
 
   open(date) {
     this.findTotalRevenue(date)
+    this.findMenu();
     domUpdates.displayOrders(this.dateOrders);
   }
 

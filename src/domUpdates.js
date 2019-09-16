@@ -11,7 +11,7 @@ const domUpdates = {
   },
 
   displayOccupancy(percent) {
-    $('#percent-available').text(`%${percent}`);
+    $('#percent-available').text(`${percent}%`);
   },
 
   displayOrders(orders) {
@@ -40,7 +40,7 @@ const domUpdates = {
   },
 
   displaySearchGuests(guests) {
-    let list = `<ul class="search-list"></ul>`
+    let list = `<ul class="search-list">`
     guests.forEach(guest => {
       list += `<li class="searched" data-id="${guest.id}"> ${guest.name} </li>`
     })

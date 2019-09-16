@@ -98,7 +98,7 @@ a {
   border: 1px solid $accentColor;
   border-radius: 0 0 6px 6px;
   border-top: 0;
-  height: 100%;
+  height: calc(90vh - 200px);
   padding: 24px 30px;
   width: 100%;
   div {
@@ -136,6 +136,15 @@ a {
     width: 18%;
   }
   .search-results {
+    .search-list {
+      margin-top: 2%;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 300px;
+      overflow: scroll;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 100%;
     li {
       margin-top: 5%;
       width: 100%;
@@ -148,6 +157,7 @@ a {
         cursor: pointer;
       }
     }
+  }
   }
 };
 
