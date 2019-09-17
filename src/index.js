@@ -29,6 +29,9 @@ $('body').click(e => {
   if (e.target.classList.contains('cancel-order')) {
     removeModal();
   }
+  if (e.target.classList.contains('order-item')) {
+    orderRoomService();
+  }
 })
 
 $('.search').click(e => {
@@ -175,11 +178,17 @@ const makeModal = () => {
 function showMenu() {
   let selection = `<select id="menu-items">`
   hotel.orders.menu.forEach(item => {
-    selection += `<option value="${item.price}">${item.food} for <b>$${item.price}</b></option>`
+    selection += `<option alt="${item.food} "value="${item.price}">${item.food} for <b>$${item.price}</b></option>`
   })
   return selection;
 }
 
 function removeModal() {
   $('.modal').remove();
+}
+
+function orderRoomService() {
+  let selectedItem = $('#menu-items');
+  hotel.currentCustomer.orderRoomService(parseFloat(selectedItem.val()), $('#menu-items option:selected').attr('alt'), today, hotel.orders.orders);
+  removeModal();
 }

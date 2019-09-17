@@ -33,8 +33,12 @@ class Customer {
 
   }
 
-  orderRoomService(price, food, day) {
-    
+  orderRoomService(price, item, day, orders) {
+    let newOrder = {userID: this.id, date: day, food: item, totalCost: price};
+    console.log(newOrder);
+    this.orders.push(newOrder);
+    orders.push(newOrder)
+    console.log('hotel.orders, customer', orders, this)
   }
 
   calculateTotalRoomService() {
