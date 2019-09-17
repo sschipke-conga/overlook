@@ -213,7 +213,7 @@ function orderRoomService() {
   domUpdates.showCustomerOrders(hotel.currentCustomer.name, hotel.currentCustomer.orders);
 }
 
-function showCurrentRoom(room){
+function showCurrentRoom(room) {
   $('.section-current-room').remove();
   let roomText = `<section class="section-current-room">
   <h3 class="h3-current-room">Currently Booked Room Number: ${room.number}</h3>
