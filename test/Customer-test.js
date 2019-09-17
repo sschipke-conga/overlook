@@ -4,10 +4,17 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-import Customer from '../src/Customer'
+import Customer from '../src/Customer';
+import Bookings from '../src/Bookings'
+import sampleBookings from './sampleBookings';
+import sampleRooms from './sampleRooms';
+import availableRooms from './availableRooms';
+import sampleGuest from './sampleGuest';
+
+let bookings = new Bookings(sampleRooms, sampleBookings);
 
 let person = { id: 4, name: "Brook Christiansen" };
-let bookings = [
+let userBookings = [
   { userID: 4, date: "2019/09/18", roomNumber: 36 },
   { userID: 4, date: "2019/08/09", roomNumber: 50 },
   { userID: 4, date: "2019/10/04", roomNumber: 7 },
@@ -39,12 +46,12 @@ let orders = [
 describe('Customer', () => {
   let guest;
   beforeEach(() => {
-    guest = new Customer(person, bookings, 0, orders);
+    guest = new Customer(person, userBookings, bookings.findRoomsForCustomer(4), orders);
     chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => { })
   });
   afterEach(() => {
     chai.spy.restore(domUpdates)
-  }) 
+  })
   describe('customer properties', () => {
     it('should have a name', () => {
       expect(guest.name).to.equal('Brook Christiansen')
@@ -83,5 +90,23 @@ describe('Customer', () => {
       ])
     })
   });
+
+  describe('bookRoom method', () => {
+    it('should have a current room once booked', () => {
+      expect(guest.currentRoom).to.equal(undefined)
+      guest.bookRoom(5, bookings, '2019/09/06');
+      expect(guest.currentRoom).to.eql({
+        "bedSize": "king",
+        "bidet": false,
+        "costPerNight": 246.65,
+        "numBeds": 2,
+        "number": 5,
+        "roomType": "junior suite"
+      })
+    });
+    it('should have incresed its bookings after booking a room', () => {
+      guest.bookRoom(5, bookings, '2019/09/06')
+    })
+  })
 
 });

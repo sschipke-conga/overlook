@@ -16,16 +16,14 @@ class Customer {
     domUpdates.displayBills(this.name, this.calculateTotalBookingsBill(), this.calculateTotalRoomService(), this.calculateTotalBill());
   }
 
-  getCurrentService() {}
-
   bookRoom(roomNumber, bookings, day) {
-      let index = bookings.availableRooms.findIndex(room => room.number === roomNumber);
+      let index = bookings.getAvailableRoomsByDate(day).findIndex(room => room.number === roomNumber);
       let newRoom = bookings.availableRooms.splice(index, 1)[0];
       bookings.bookedRooms.push(newRoom);
       this.currentRoom = newRoom;
     let booking = { userID: this.id, date: day, roomNumber: newRoom.number}
     this.bookings.push(booking);
-    this.allRooms.push(newRoom)
+    this.allRooms.push(newRoom);
     bookings.bookings.push(booking);
   }
 
