@@ -69,8 +69,8 @@ const domUpdates = {
   displayBills(name, roomTotal, serviceTotal, allTotal) {
     $('.bill').remove();
     $('.section-rooms').prepend(`<h3 class="h3-room-total bill"> ${name}'s Total Charges for rooms: $<span class="span-room-total">${roomTotal.toFixed(2)}</span></h3>`);
-    $('#orders').prepend(`<h3 class="h3-room-total bill"> ${name}'s Total Charges for services: $<span class="span-room-total">${serviceTotal.toFixed(2)}</span></h3>`);
-    $('#customer').prepend(`<h3 class="h3-total bill"> ${name}'s Total Charges: $<span class="span-room-total">${allTotal.toFixed(2)}</span></h3>`)
+    $('#orders').prepend(`<h3 class="h3-room-total bill"> ${name}'s Total Charges for services: $<span class="span-orders-total">${serviceTotal.toFixed(2)}</span></h3>`);
+    $('#customer').prepend(`<h3 class="h3-total bill"> ${name}'s Total Charges: $<span class="span-all-total">${allTotal.toFixed(2)}</span></h3>`)
   },
 
 

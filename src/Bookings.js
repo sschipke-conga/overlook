@@ -12,7 +12,8 @@ class Bookings {
 
   open(date) {
     this.findTotalRoomRevenue(date)
-    this.findOccupancy(date)
+    domUpdates.displayAvailableRooms(this.availableRooms.length)
+    domUpdates.displayOccupancy((this.findOccupancy(date)))
     domUpdates.displayBoookingStats(this.findMostAndLeastPopularDay())
   } 
 
@@ -24,7 +25,6 @@ class Bookings {
     let bookingsByDate = this.getBookingsByDate(date).map(booking => booking.roomNumber);
     this.bookedRooms = this.rooms.filter(room => bookingsByDate.includes(room.number))
     this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number));
-    domUpdates.displayAvailableRooms(this.availableRooms.length )
     return this.availableRooms;
   }
 
@@ -68,7 +68,6 @@ class Bookings {
 
   findOccupancy() {
     let occupancy = ((this.bookedRooms.length) / (this.rooms.length) * 100);
-    domUpdates.displayOccupancy(occupancy)
     return occupancy;
   }
 }

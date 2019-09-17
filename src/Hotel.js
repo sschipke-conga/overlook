@@ -15,7 +15,8 @@ class Hotel {
   open() {
     this.bookings.open(this.currentDate);
     this.orders.open(this.currentDate);
-    this.getTotalRevenueByDate();
+    domUpdates.displayTotalRevenue(this.getTotalRevenueByDate());
+    
   }
 
   findCurrentCustomer(id) {
@@ -33,7 +34,7 @@ class Hotel {
 
   getTotalRevenueByDate() {
     let total = this.bookings.findTotalRoomRevenue(this.currentDate) + this.orders.findTotalRevenue(this.currentDate)
-    domUpdates.displayTotalRevenue(total)
+    return total;
   }
 
 }

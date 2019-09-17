@@ -190,5 +190,9 @@ function removeModal() {
 function orderRoomService() {
   let selectedItem = $('#menu-items');
   hotel.currentCustomer.orderRoomService(parseFloat(selectedItem.val()), $('#menu-items option:selected').attr('alt'), today, hotel.orders.orders);
+  $('.span-orders-total').text(`${hotel.currentCustomer.calculateTotalRoomService().toFixed(2)}`);
+  $('.span-all-total').text(`${hotel.currentCustomer.calculateTotalBill().toFixed(2)}`);
+  $('#total-revenue').text(`$${hotel.getTotalRevenueByDate()}`);
   removeModal();
+  domUpdates.showCustomerOrders(hotel.currentCustomer.name, hotel.currentCustomer.orders);
 }
