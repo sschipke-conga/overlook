@@ -10,8 +10,7 @@ import RoomService from '../src/RoomService';
 import sampleRoomService from '../test/sampleRoomService';
 import sampleBookings from './sampleBookings';
 import sampleRooms from './sampleRooms';
-import availableRooms from './availableRooms';
-import sampleGuest from './sampleGuest';
+
 
 let person = { id: 4, name: "Brook Christiansen" };
 let userBookings = [
@@ -94,6 +93,10 @@ describe('Customer', () => {
   });
 
   describe('bookRoom method', () => {
+      afterEach(() => {
+        sampleBookings.pop();
+        sampleRooms.pop();
+      })
     it('should have a current room once booked', () => {
       expect(guest.currentRoom).to.equal(undefined)
       guest.bookRoom(5, guestBookings, '2019/09/06');
@@ -112,14 +115,14 @@ describe('Customer', () => {
       expect(guest.bookings.length).to.equal(12);
     });
     it('should have added its new booking to all bookings', () => {
-      expect(guestBookings.bookings.length).to.equal(89);
+      expect(guestBookings.bookings.length).to.equal(87);
       guest.bookRoom(5, guestBookings, '2019/09/06');
-      expect(guestBookings.bookings.length).to.equal(90);
+      expect(guestBookings.bookings.length).to.equal(88);
     });
   });
   describe('orderRoomService' , () => {
     afterEach(() => {
-      sampleRoomService.splice((sampleRoomService.length-1),1);
+      sampleRoomService.pop();
     });
     it('should increase its orders', () => {
       expect(guest.orders.length).to.equal(2);
