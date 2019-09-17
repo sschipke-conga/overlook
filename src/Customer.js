@@ -23,7 +23,7 @@ class Customer {
       let newRoom = bookings.availableRooms.splice(index, 1);
       bookings.bookedRooms.push(newRoom);
       this.currentRoom = newRoom;
-    let booking = { userID: this.id, date: day, roomNumber: this.currentRoom.roomNumber }
+    let booking = { userID: this.id, date: day, roomNumber: newRoom.number}
     this.bookings.push(booking);
     this.allRooms.push(newRoom)
     bookings.bookings.push(booking);
@@ -33,7 +33,9 @@ class Customer {
 
   }
 
-  orderRoomService() {}
+  orderRoomService(price, food, day) {
+    
+  }
 
   calculateTotalRoomService() {
     let serviceBill = this.orders.reduce((bill, order) => {

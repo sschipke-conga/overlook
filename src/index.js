@@ -25,6 +25,12 @@ let $Rooms = $('#rooms');
 
 $earchInput.keyup(searchCustomers);
 
+$('body').click(e => {
+  if (e.target.classList.contains('cancel-order')) {
+    removeModal();
+  }
+})
+
 $('.search').click(e => {
   handleCustomerClick(e);
   makeNewCustomer(e)
@@ -33,6 +39,10 @@ $('.search').click(e => {
 $Rooms.click(e  => {
   handleMakeNewBooking(e);
   makeNewBooking(e);
+})
+
+$('#orders').click(e => {
+  handleNewRoomService(e);
 })
 
 
@@ -137,6 +147,39 @@ function makeNewBooking(e) {
     let roomNumber = parseInt(e.target.id);
     hotel.currentCustomer.bookRoom(roomNumber, hotel.bookings, today);
     e.target.closest('.section-available-rooms').remove();
-    // $Rooms.append(``)
   }
+}
+
+const handleNewRoomService = e => {
+  if (e.target.classList.contains('order-service')) {
+    makeModal();
+  }
+}
+
+const makeModal = () => {
+  $('body').prepend(
+    `<section class="modal">
+      <section class="modal-content">
+      <label for="menu-items" class="label-menu">
+        Please select from the following:
+        </label>
+        ${showMenu()}
+        </select>
+        <button class="order-item" type="button">Order Item</button>
+        <button class="cancel-order" type="button">Cancel</button>
+      </section>
+    </section>`
+  )
+}
+
+function showMenu() {
+  let selection = `<select id="menu-items">`
+  hotel.orders.menu.forEach(item => {
+    selection += `<option value="${item.price}">${item.food} for <b>$${item.price}</b></option>`
+  })
+  return selection;
+}
+
+function removeModal() {
+  $('.modal').remove();
 }

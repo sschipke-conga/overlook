@@ -52,7 +52,7 @@ const domUpdates = {
     $orders.html('');
     $('.orders--h3').text(`Here are the orders for ${name}:`)
     $orders.append(`<table class="cusom-orders">
-    ${showOrders(orders)} </table> `)
+    ${showOrders(orders)} </table> <button class="order-service">Order Room Service</button>`)
     function showOrders() {
       let table = `<tr>
       <th>Date</th><th>Item</th><th>Price</th>
