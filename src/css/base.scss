@@ -224,7 +224,7 @@ table{
     align-items: center;
     button {
       font-size: 1.1em;
-      height: 4vh;
+      height: 5vh;
       width: 20%;
     }
   }
@@ -238,11 +238,11 @@ table{
     align-items: center;
     width:100%;
     .section-bookings-table {
-      max-height: 50vh;
-        overflow-x: hidden;
-        table-layout: fixed;
-        white-space: nowrap;
-        width: 25%;
+      overflow-x: hidden;
+      table-layout: fixed;
+      white-space: nowrap;
+      max-height: 40vh;
+      width: 25%;
     }
 }
   button {
@@ -336,7 +336,7 @@ table{
   .order-item {
     font-size: 1.3em;
     width: 50%;
-    height: 5vh;
+    height: 6vh;
   }
   button {
     font-size: 1em;
