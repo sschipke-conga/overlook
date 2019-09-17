@@ -85,9 +85,8 @@ li {
 }
 
 a {
-  background: hsl(240, 8%, 92%);
   border: 1px solid $accentColor;
-  color: $lightBlue;
+  color: black;
   display: block;
   font-weight: 600;
   padding: 10px 0;
@@ -96,7 +95,7 @@ a {
 }
 .tab-active{
   a {
-  background: $backgroundColor;
+  background: rgba(180, 213, 234, 0.576);
   border-bottom-color: transparent;
   color: $activeBlue;
   cursor: default;
@@ -205,12 +204,7 @@ table{
 }
 
 #rooms {
-  // align-items: center;
-// .section-popular {
-//   display: flex;
   flex-direction: row;
-//   align-items: center;
-//   width: 40%;
   .section-rooms {
     display: flex;
     flex-direction: column;
