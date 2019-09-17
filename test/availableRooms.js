@@ -168,14 +168,6 @@ const availableRooms = [
     costPerNight: 190.26
   },
   {
-    number: 23,
-    roomType: "single room",
-    bidet: false,
-    bedSize: "full",
-    numBeds: 2,
-    costPerNight: 245.42
-  },
-  {
     number: 25,
     roomType: "junior suite",
     bidet: true,

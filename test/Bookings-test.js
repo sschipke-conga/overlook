@@ -10,7 +10,7 @@ import availableRooms from './availableRooms'
 import domUpdates from '../src/domUpdates'
 
 
-describe.skip('Bookings', () => {
+describe('Bookings', () => {
   let bookings;
   beforeEach(() => {
     chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => {})
@@ -37,8 +37,7 @@ describe.skip('Bookings', () => {
   describe("getAvailableRoomsByDate method", () => {
     it("should get available rooms for a specific date", () => {
       expect(bookings.getAvailableRoomsByDate("2019/09/16")).to.eql(
-        availableRooms
-      );
+        availableRooms);
     });
     it('should update availableRooms property', () => {
       bookings.getAvailableRoomsByDate("2019/09/16")
@@ -56,6 +55,14 @@ describe.skip('Bookings', () => {
           "roomType": "suite"
         },
         {
+          "bedSize": "full",
+          "bidet": false,
+          "costPerNight": 245.42,
+          "numBeds": 2,
+          "number": 23,
+          "roomType": "single room"
+        },
+        {
           "bedSize": "queen",
           "bidet": true,
           "costPerNight": 174.95,
@@ -67,12 +74,12 @@ describe.skip('Bookings', () => {
     });
   })
   it('should return the total revenue of booked rooms', () => {
-    expect(bookings.findTotalRoomRevenue("2019/09/16")).to.equal(338.05);
+    expect(bookings.findTotalRoomRevenue("2019/09/16")).to.equal(583.47);
   });
 
   it('should find the occupancy (percentage of rooms booked)', () => {
     bookings.getAvailableRoomsByDate('2019/09/16');
-    expect(bookings.findOccupancy()).to.equal(8);
+    expect(bookings.findOccupancy()).to.equal(12);
   });
   it('should find the most and least popular day', () => {
     expect(bookings.findMostAndLeastPopularDay()).to.eql([{ day: '2019/08/10', number: 4 }, { day: '2019/08/25', number: 1 }]);
