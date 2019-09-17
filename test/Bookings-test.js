@@ -3,23 +3,22 @@ const expect = chai.expect;
 const spies = require('chai-spies');
 chai.use(spies);
 
-import Bookings from '../src/Bookings'
-import sampleBookings from './sampleBookings'
-import sampleRooms from './sampleRooms'
-import availableRooms from './availableRooms'
-import domUpdates from '../src/domUpdates'
-import sampleGuest from './sampleGuest'
-
+import Bookings from '../src/Bookings';
+import sampleBookings from './sampleBookings';
+import sampleRooms from './sampleRooms';
+import availableRooms from './availableRooms';
+import domUpdates from '../src/domUpdates';
+import sampleGuest from './sampleGuest';
+chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy', 'displayOrders', 'displayTotalRevenue', 'displaySearchGuests', 'showCustomerOrders', 'displayBills', 'showCustomerBookings', 'displayName'], () => true);
 
 describe('Bookings', () => {
   let bookings;
   beforeEach(() => {
-    chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => {})
-    bookings = new Bookings(sampleRooms, sampleBookings)
+    bookings = new Bookings(sampleRooms, sampleBookings);
   });
   afterEach(() => {
     chai.spy.restore(domUpdates)
-  }) 
+  });
 
   describe('Bookings properties', () => {
     it('should hold all the rooms', () => {
@@ -34,7 +33,8 @@ describe('Bookings', () => {
     it('should start off not knowing which rooms are booked', () => {
       expect(bookings.bookedRooms).to.equal(undefined)
     });
-  })
+  });
+
 
   it("should get specific bookings by date", () => {
     expect(bookings.getBookingsByDate("2019/10/21")).to.eql([
@@ -86,13 +86,13 @@ describe('Bookings', () => {
 
   it('should find bookings by customer using their id', () => {
     expect(bookings.findBookingsByCustomer(4)).to.eql(sampleGuest.bookings)
-  })
+  });
 
   it('should find all the rooms a customer has ever booked', () => {
     expect(bookings.findRoomsForCustomer(4)).to.eql(sampleGuest.allRooms)
-  })
+  });
 
-  it('should return the total revenue of booked rooms', () => {
+  it('should return the total revenue of booked rooms for a specific date', () => {
     expect(bookings.findTotalRoomRevenue("2019/09/16")).to.equal(583.47);
   });
 
@@ -100,7 +100,7 @@ describe('Bookings', () => {
     bookings.getAvailableRoomsByDate('2019/09/16');
     expect(bookings.findOccupancy()).to.equal(12);
   });
-  
+
 
 
 })

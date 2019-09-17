@@ -13,7 +13,7 @@ import sampleRoomService from '../test/sampleRoomService'
 import sampleGuest from './sampleGuest'
 import domUpdates from '../src/domUpdates'
 
-chai.spy.on(domUpdates, ['displayTotalRevenue '])
+// chai.spy.on(domUpdates, ['displayTotalRevenue '])
 
 const users = [{ id: 1, name: "Matilde Larson" },
   { id: 2, name: "Chadrick Lowe" },
@@ -25,7 +25,7 @@ const users = [{ id: 1, name: "Matilde Larson" },
   { id: 8, name: "Zachery Abbott" },
   { id: 9, name: "Paula Anderson" },
   { id: 10, name: "Chyna Gulgowski" }];
-  
+
 
 
 describe('Hotel', () => {
@@ -57,7 +57,7 @@ describe('Hotel', () => {
   describe('findCurrentCustomer method', () => {
     it('should be able to find a current customer', () => {
       hotel.findCurrentCustomer(4)
-      expect(hotel.currentCustomer).to.eql(sampleGuest)
+      expect(hotel.currentCustomer.name).to.equal('Brook Christiansen')
     });
     it('its current customer should be an instance of Customer', () => {
       hotel.findCurrentCustomer(4)

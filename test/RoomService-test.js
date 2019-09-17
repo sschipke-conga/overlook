@@ -16,7 +16,8 @@ describe('RoomService', () => {
     chai.spy.on(domUpdates, ['displayOrders'], () => {})
   });
   afterEach(() => {
-    chai.spy.restore(domUpdates)
+    chai.spy.restore(domUpdates);
+    roomService = new RoomService(sampleRoomService);
   });
 
 describe('properties', () => {

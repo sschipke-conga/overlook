@@ -12,15 +12,15 @@ class Customer {
   open() {
     domUpdates.showCustomerOrders(this.name, this.orders);
     domUpdates.showCustomerBookings(this.name, this.bookings);
-    domUpdates.displayName(this.name)
+    domUpdates.displayName(this.name);
     domUpdates.displayBills(this.name, this.calculateTotalBookingsBill(), this.calculateTotalRoomService(), this.calculateTotalBill());
   }
 
   bookRoom(roomNumber, bookings, day) {
-      let index = bookings.getAvailableRoomsByDate(day).findIndex(room => room.number === roomNumber);
-      let newRoom = bookings.availableRooms.splice(index, 1)[0];
-      bookings.bookedRooms.push(newRoom);
-      this.currentRoom = newRoom;
+    let index = bookings.getAvailableRoomsByDate(day).findIndex(room => room.number === roomNumber);
+    let newRoom = bookings.availableRooms.splice(index, 1)[0];
+    bookings.bookedRooms.push(newRoom);
+    this.currentRoom = newRoom;
     let booking = { userID: this.id, date: day, roomNumber: newRoom.number}
     this.bookings.push(booking);
     this.allRooms.push(newRoom);
@@ -48,7 +48,7 @@ class Customer {
   calculateTotalBookingsBill() {
     let bookingsBill = this.allRooms.reduce((bill, room) => {
       bill += room.costPerNight
-    return bill;
+      return bill;
     }, 0)
     return bookingsBill
   }
