@@ -4,11 +4,11 @@ import Bookings from "./Bookings"
 import domUpdates from "./domUpdates";
 
 class Hotel {
-  constructor(userData, roomsData, bookingsData, ordersData, today) {
+  constructor(userData, roomsData, bookingsData, ordersData, day) {
     this.bookings = new Bookings(roomsData, bookingsData)
     this.orders = new RoomService(ordersData)
     this.customers = userData;
-    this.currentDate = today;
+    this.currentDate = day;
     this.currentCustomer;
   }
 
