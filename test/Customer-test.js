@@ -109,6 +109,11 @@ describe('Customer', () => {
       guest.bookRoom(5, bookings, '2019/09/06');
       expect(guest.bookings.length).to.equal(12);
     });
+    it('should have added its new booking to all bookings', () => {
+      expect(bookings.bookings.length).to.equal(89);
+      guest.bookRoom(5, bookings, '2019/09/06');
+      expect(bookings.bookings.length).to.equal(90);
+    });
   })
 
 });
