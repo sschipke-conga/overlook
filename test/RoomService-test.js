@@ -99,8 +99,16 @@ describe('properties', () => {
     expect(roomService.findTotalRevenue('2019/09/06')).to.equal(11.49)
   });
 
-  it('should be able open and display results', () => {
+  it('should be able open and display results and have a menu', () => {
     roomService.open('2019/09/06');
-    expect(domUpdates.displayOrders).to.have.been.called(1)
-  })
+    expect(domUpdates.displayOrders).to.have.been.called(1);
+    expect(roomService.menu).to.eql([{ food: 'Rustic Soft Sandwich', price: 6.78 },
+    { food: 'Refined Rubber Sandwich', price: 9.89 },
+    { food: 'Practical Concrete Sandwich', price: 11.49 },
+    { food: 'Sleek Steel Sandwich', price: 12.79 },
+    { food: 'Practical Granite Sandwich', price: 14.87 },
+    { food: 'Licensed Metal Sandwich', price: 17.77 },
+    { food: 'Unbranded Concrete Sandwich', price: 22.8 }
+    ]);
+  });
 });
