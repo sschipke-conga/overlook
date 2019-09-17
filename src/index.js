@@ -32,6 +32,8 @@ $('body').click(e => {
   if (e.target.classList.contains('order-item')) {
     orderRoomService();
   }
+  makeNewBooking(e);
+
 })
 
 $('.search').click(e => {
@@ -40,8 +42,9 @@ $('.search').click(e => {
 })
 
 $Rooms.click(e  => {
-  handleMakeNewBooking(e);
-  makeNewBooking(e);
+  // handleMakeNewBooking(e);
+  handleMakeNewBookingModal(e);
+  // makeNewBooking(e);
 })
 
 $('#orders').click(e => {
@@ -125,11 +128,13 @@ const makeNewCustomer = (e) => {
   }
 }
 
-const handleMakeNewBooking = (e) => {
+const handleMakeNewBookingModal = (e) => {
   if (e.target.classList.contains('make-booking')) {
-    $Rooms.append(`<section class="section-available-rooms">
-    <h3 class="h3-available-rooms">Here are the available Rooms: </h3>
-    ${showAvailableRooms()}</ul></section>`)
+    makeBookingsModal();
+
+    // $Rooms.append(`<section class="section-available-rooms">
+    // <h3 class="h3-available-rooms">Here are the available Rooms: </h3>
+    // ${showAvailableRooms()}</ul></section>`)
   }
 }
 
@@ -149,20 +154,27 @@ function makeNewBooking(e) {
   if (e.target.classList.contains('book-room')) {
     let roomNumber = parseInt(e.target.id);
     hotel.currentCustomer.bookRoom(roomNumber, hotel.bookings, today);
-    e.target.closest('.section-available-rooms').remove();
+    console.log(hotel.currentCustomer)
+    // e.target.closest('.section-available-rooms').remove();
+    $('.span-orders-total').text(`${hotel.currentCustomer.calculateTotalBookingsBill().toFixed(2)}`);
+    $('.span-all-total').text(`${hotel.currentCustomer.calculateTotalBill().toFixed(2)}`);
+    $('#total-revenue').text(`$${hotel.getTotalRevenueByDate()}`);
+    removeModal();
+
+
   }
 }
 
 const handleNewRoomService = e => {
   if (e.target.classList.contains('order-service')) {
-    makeModal();
+    makeMenuModal();
   }
 }
 
-const makeModal = () => {
+const makeMenuModal = () => {
   $('body').prepend(
-    `<section class="modal">
-      <section class="modal-content">
+    `<div class="modal menu-modal">
+      <div class="modal-content menu">
       <label for="menu-items" class="label-menu">
         Please select from the following:
         </label>
@@ -170,8 +182,8 @@ const makeModal = () => {
         </select>
         <button class="order-item" type="button">Order Item</button>
         <button class="cancel-order" type="button">Cancel</button>
-      </section>
-    </section>`
+      </div>
+    </div>`
   )
 }
 
@@ -195,4 +207,16 @@ function orderRoomService() {
   $('#total-revenue').text(`$${hotel.getTotalRevenueByDate()}`);
   removeModal();
   domUpdates.showCustomerOrders(hotel.currentCustomer.name, hotel.currentCustomer.orders);
+}
+
+const makeBookingsModal = () => {
+  $('body').prepend(
+    `<div class="modal bookings-modal">
+      <div class="modal-content content-bookings-modal">
+        <h3 class="h3-available-rooms">Here are the available Rooms: </h3>
+        ${showAvailableRooms()}</ul>
+        <button class="cancel-order" type="button">Cancel</button>
+      </div>
+    </div>`
+  ).fadeIn(2000)
 }
