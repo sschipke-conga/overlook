@@ -7,7 +7,7 @@ const domUpdates = {
   },
 
   displayTotalRevenue (total) {
-    $('#total-revenue').text(`$${total}`)
+    $('#total-revenue').text(`$${total.toFixed(2)}`)
   },
 
   displayOccupancy(percent) {
