@@ -5,7 +5,6 @@ class RoomService {
     this.orders = serviceData
     this.dateOrders;
     this.menu;
-    this.dateOrders;
   }
 
   open(date) {
