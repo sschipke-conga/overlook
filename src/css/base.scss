@@ -42,6 +42,9 @@ button {
   border: 2px solid black;
   border-radius: 4px;
   padding: 5px;
+  &:focus {
+    background-color: $hoverColor;
+  }
   &:hover {
     cursor: pointer;
     background-color: $hoverColor;
@@ -141,9 +144,17 @@ a {
     align-items: center;
   }
   input {
+    border: 2px solid $accentColor;
+    border-radius: 4px;
     margin-top: 2%;
+    font-size: 1.2em;
     padding: 10px;
     width: 18%;
+    &:focus {
+      background-color: rgba(180, 213, 234, 0.576);
+      border: none;
+        outline: 3px solid $activeBlue;
+      }
   }
   .search-results {
     .search-list {
@@ -167,8 +178,24 @@ a {
         background-color: $hoverColor;
         cursor: pointer;
       }
+      }
     }
   }
+  .add-customer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+    input {
+      font-size: 1em;
+      margin-top: 5%;
+      width: 50%;
+    }
+    button {
+      font-size: 1.1em;
+      width: 40%;
+      height: 5vh;
+    }
   }
 };
 
