@@ -6,6 +6,7 @@ chai.use(spies);
 import Hotel from '../src/Hotel'
 import Bookings from '../src/Bookings'
 import RoomService from '../src/RoomService'
+import Customer from '../src/Customer'
 import sampleBookings from './sampleBookings'
 import sampleRooms from './sampleRooms'
 import sampleRoomService from '../test/sampleRoomService'
@@ -58,21 +59,20 @@ describe('Hotel', () => {
       hotel.findCurrentCustomer(4)
       expect(hotel.currentCustomer).to.eql(sampleGuest)
     });
-    it('should be able to find a current customer', () => {
+    it('its current customer should be an instance of Customer', () => {
       hotel.findCurrentCustomer(4)
-      expect(hotel.currentCustomer).to.eql(sampleGuest)
+      expect(hotel.currentCustomer).to.be.an.instanceOf(Customer)
     });
   });
 
-  it.skip('should get the to', () => {
-    
-  });
-
-  it.skip('should be able to add a new customer', () => {
+  it('should be able to add a new customer', () => {
     hotel.addNewCustomer('Steve Gupta')
     expect(hotel.currentCustomer).to.eql({
       id: 11,
-      name: "Steve Gupta"
+      name: "Steve Gupta",
+      "orders": [],
+      "allRooms": [],
+      "bookings": []
     });
     expect(hotel.customers.length).to.equal(11)
   })
