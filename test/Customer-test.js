@@ -6,12 +6,12 @@ chai.use(spies);
 
 import Customer from '../src/Customer';
 import Bookings from '../src/Bookings'
+import RoomService from '../src/RoomService';
+import sampleRoomService from '../test/sampleRoomService';
 import sampleBookings from './sampleBookings';
 import sampleRooms from './sampleRooms';
 import availableRooms from './availableRooms';
 import sampleGuest from './sampleGuest';
-
-let bookings = new Bookings(sampleRooms, sampleBookings);
 
 let person = { id: 4, name: "Brook Christiansen" };
 let userBookings = [
@@ -44,14 +44,16 @@ let orders = [
 
 
 describe('Customer', () => {
-  let guest;
+  let guest, guestRoomService, guestBookings;
   beforeEach(() => {
-    guest = new Customer(person, userBookings, bookings.findRoomsForCustomer(4), orders);
+    guestBookings = new Bookings(sampleRooms, sampleBookings);
+    guestRoomService = new RoomService(sampleRoomService);
+    guest = new Customer(person, userBookings, guestBookings.findRoomsForCustomer(4), orders);
     chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => { })
   });
   afterEach(() => {
-    chai.spy.restore(domUpdates)
-  })
+    chai.spy.restore(domUpdates);
+  });
   describe('customer properties', () => {
     it('should have a name', () => {
       expect(guest.name).to.equal('Brook Christiansen')
@@ -94,7 +96,7 @@ describe('Customer', () => {
   describe('bookRoom method', () => {
     it('should have a current room once booked', () => {
       expect(guest.currentRoom).to.equal(undefined)
-      guest.bookRoom(5, bookings, '2019/09/06');
+      guest.bookRoom(5, guestBookings, '2019/09/06');
       expect(guest.currentRoom).to.eql({
         "bedSize": "king",
         "bidet": false,
@@ -106,14 +108,24 @@ describe('Customer', () => {
     });
     it('should have increased its bookings after booking a room', () => {
       expect(guest.bookings.length).to.equal(11);
-      guest.bookRoom(5, bookings, '2019/09/06');
+      guest.bookRoom(5, guestBookings, '2019/09/06');
       expect(guest.bookings.length).to.equal(12);
     });
     it('should have added its new booking to all bookings', () => {
-      expect(bookings.bookings.length).to.equal(89);
-      guest.bookRoom(5, bookings, '2019/09/06');
-      expect(bookings.bookings.length).to.equal(90);
+      expect(guestBookings.bookings.length).to.equal(89);
+      guest.bookRoom(5, guestBookings, '2019/09/06');
+      expect(guestBookings.bookings.length).to.equal(90);
     });
+  });
+  describe('orderRoomService' , () => {
+    afterEach(() => {
+      sampleRoomService.splice((sampleRoomService.length-1),1);
+    });
+    it('should increase its orders', () => {
+      expect(guest.orders.length).to.equal(2);
+      guest.orderRoomService(9.89, 'Refined Rubber Sandwich', '2019/09/06', guestRoomService.orders);
+      expect(guest.orders.length).to.equal(3);
+    })
   })
 
 });
