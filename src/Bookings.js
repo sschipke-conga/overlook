@@ -4,10 +4,8 @@ class Bookings {
   constructor(roomsData, bookingsData) {
     this.rooms = roomsData;
     this.bookings = bookingsData
-    this.guest;
     this.availableRooms;
     this.bookedRooms;
-    this.bookingRevenue;
   }
 
   open(date) {
