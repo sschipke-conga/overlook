@@ -256,7 +256,8 @@ table{
       margin-top: 5px;
     }
     .cancel-order {
-      background-color: $activeBlue;
+      background-color: papayawhip;
+      font-size: 1.3em;
         width: 50%;
         height:6vh;
       &:hover {
@@ -277,9 +278,21 @@ table{
       margin-left: 10px;
       max-height: 65vh;
       width: 80%;
+      li {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5px;
+        &:hover {
+          border: 2px solid black;
+          border-radius: 4px;
+        }
+      }
       .book-room {
+        font-size: .8em;
+        margin: 10px 0 5px 0;
         width: 58%;
-        height: 15%;
+        height: 35%;
         &:hover {
           background-color: $hoverColor;
         }

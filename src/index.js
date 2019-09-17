@@ -146,10 +146,11 @@ const makeBookingsModal = () => {
 function showAvailableRooms() {
   let availableRooms = `<ul class="available-rooms">`;
   hotel.bookings.availableRooms.forEach(room => {
-    availableRooms += `
+    availableRooms += `<li>
     <h5> Room: ${room.number}, ${room.roomType.toUpperCase()}, $${room.costPerNight}</h5>
     <h6>- bed: ${room.bedSize.toUpperCase()}, Quantity: ${room.numBeds}, bidet: ${room.bidet}</h6>
     <button class="book-room" id="${room.number}">Book this room</button>
+    </li>
     `
   })
   return availableRooms
