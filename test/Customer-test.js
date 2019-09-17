@@ -104,9 +104,11 @@ describe('Customer', () => {
         "roomType": "junior suite"
       })
     });
-    it('should have incresed its bookings after booking a room', () => {
-      guest.bookRoom(5, bookings, '2019/09/06')
-    })
+    it('should have increased its bookings after booking a room', () => {
+      expect(guest.bookings.length).to.equal(11);
+      guest.bookRoom(5, bookings, '2019/09/06');
+      expect(guest.bookings.length).to.equal(12);
+    });
   })
 
 });
