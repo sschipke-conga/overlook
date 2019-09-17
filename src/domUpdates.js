@@ -6,7 +6,7 @@ const domUpdates = {
     $('#rooms-today').text(`${rooms}`)
   },
 
-  displayTotalRevenue (total) {
+  displayTotalRevenue(total) {
     $('#total-revenue').text(`$${total.toFixed(2)}`)
   },
 

@@ -16,9 +16,9 @@ class RoomService {
 
   findOrdersByCustomer(guestID) {
     return this.orders.filter(orders => orders.userID === guestID)
-  
+
   }
-  
+
   findOrdersByDate(date) {
     this.dateOrders = this.orders.filter(order => order.date === date)
     return this.dateOrders;
