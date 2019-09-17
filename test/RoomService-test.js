@@ -51,27 +51,26 @@ describe('RoomService', () => {
     ]);
   })
   it('should be able to make a menu', () => {
-    expect(roomService.findMenu()).to.eql([ { food: 'Refined Rubber Sandwich', price: 9.89 },
-  { food: 'Rustic Soft Sandwich', price: 6.78 },
-  { food: 'Unbranded Concrete Sandwich', price: 22.8 },
-  { food: 'Sleek Steel Sandwich', price: 12.79 },
-  { food: 'Practical Concrete Sandwich', price: 11.49 },
-  { food: 'Licensed Metal Sandwich', price: 17.77 },
-  { food: 'Practical Granite Sandwich', price: 14.87 },
-  { food: 'Tasty Concrete Sandwich', price: 12.01 },
-  { food: 'Refined Metal Sandwich', price: 12.32 },
-  { food: 'Handcrafted Metal Sandwich', price: 12.36 },
-  { food: 'Small Metal Sandwich', price: 22.75 },
-  { food: 'Rustic Concrete Sandwich', price: 14.9 },
-  { food: 'Awesome Granite Sandwich', price: 18.34 },
-  { food: 'Gorgeous Concrete Sandwich', price: 24.79 },
-  { food: 'Tasty Granite Sandwich', price: 9.23 },
-  { food: 'Fantastic Metal Sandwich', price: 21.6 },
-  { food: 'Generic Soft Sandwich', price: 12.77 },
-  { food: 'Ergonomic Wooden Sandwich', price: 24.79 },
-  { food: 'Generic Cotton Sandwich', price: 21.66 },
-  { food: 'Awesome Metal Sandwich', price: 12.56 }
-])
+    expect(roomService.findMenu()).to.eql([{ food: 'Rustic Soft Sandwich', price: 6.78 },
+    { food: 'Tasty Granite Sandwich', price: 9.23 },
+    { food: 'Refined Rubber Sandwich', price: 9.89 },
+    { food: 'Practical Concrete Sandwich', price: 11.49 },
+    { food: 'Tasty Concrete Sandwich', price: 12.01 },
+    { food: 'Refined Metal Sandwich', price: 12.32 },
+    { food: 'Handcrafted Metal Sandwich', price: 12.36 },
+    { food: 'Awesome Metal Sandwich', price: 12.56 },
+    { food: 'Generic Soft Sandwich', price: 12.77 },
+    { food: 'Sleek Steel Sandwich', price: 12.79 },
+    { food: 'Practical Granite Sandwich', price: 14.87 },
+    { food: 'Rustic Concrete Sandwich', price: 14.9 },
+    { food: 'Licensed Metal Sandwich', price: 17.77 },
+    { food: 'Awesome Granite Sandwich', price: 18.34 },
+    { food: 'Fantastic Metal Sandwich', price: 21.6 },
+    { food: 'Generic Cotton Sandwich', price: 21.66 },
+    { food: 'Small Metal Sandwich', price: 22.75 },
+    { food: 'Unbranded Concrete Sandwich', price: 22.8 },
+    { food: 'Gorgeous Concrete Sandwich', price: 24.79 },
+    { food: 'Ergonomic Wooden Sandwich', price: 24.79 }])
   });
   it('should find total revenue for a day', () => {
     expect(roomService.findTotalRevenue('2019/09/06')).to.equal(24.05)
