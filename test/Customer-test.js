@@ -205,11 +205,13 @@ let orders = [
   }
 ];
 
+let allBookings = [...sampleBookings , ...userBookings];
+
 
 describe('Customer', () => {
   let guest, guestRoomService, guestBookings;
   beforeEach(() => {
-    guestBookings = new Bookings(sampleRooms, sampleBookings);
+    guestBookings = new Bookings(sampleRooms, allBookings);
     guestRoomService = new RoomService(sampleOrders);
     guest = new Customer(person, userBookings, guestBookings.findRoomsForCustomer(4), orders);
     chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => { })
@@ -275,9 +277,9 @@ describe('Customer', () => {
       expect(guest.bookings.length).to.equal(12);
     });
     it('should have added its new booking to all bookings', () => {
-      expect(guestBookings.bookings.length).to.equal(7);
+      expect(guestBookings.bookings.length).to.equal(17);
       guest.bookRoom(5, guestBookings, '2019/09/06');
-      expect(guestBookings.bookings.length).to.equal(8);
+      expect(guestBookings.bookings.length).to.equal(18);
     });
   });
   describe('orderRoomService' , () => {
@@ -292,8 +294,23 @@ describe('Customer', () => {
     it('should add its order to all orders', () => {
       expect(guestRoomService.orders.length).to.equal(2);
       guest.orderRoomService(9.89, 'Refined Rubber Sandwich', '2019/09/06', guestRoomService.orders);
-
-    })
-  })
+      expect(guestRoomService.orders.length).to.equal(3);
+    });
+    it('its order should be an object', () => {
+      guest.orderRoomService(9.89, 'Refined Rubber Sandwich', '2019/09/06', guestRoomService.orders);
+      expect(guestRoomService.orders[(guestRoomService.orders.length - 1)]).to.eql({
+    userID: 4,
+    date: '2019/09/06',
+    food: 'Refined Rubber Sandwich',
+    totalCost: 9.89
+      });
+    });
+  });
+  it('should calculate total bill for bookings', () => {
+    expect(guest.calculateTotalBookingsBill().toFixed(2)).to.equal('2758.16')
+  });
+  it('should calculate total bill for orders', () => {
+    expect(guest.calculateTotalBookingsBill().toFixed(2)).to.equal('2758.16')
+  });
 
 });
