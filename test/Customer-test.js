@@ -310,7 +310,10 @@ describe('Customer', () => {
     expect(guest.calculateTotalBookingsBill().toFixed(2)).to.equal('2758.16')
   });
   it('should calculate total bill for orders', () => {
-    expect(guest.calculateTotalBookingsBill().toFixed(2)).to.equal('2758.16')
+    expect(guest.calculateTotalRoomService().toFixed(2)).to.equal('24.28')
+  });
+  it('should calculate total bill for orders AND bookings', () => {
+    expect(guest.calculateTotalBill().toFixed(2)).to.equal('2782.44')
   });
 
 });
