@@ -192,6 +192,15 @@ table{
   table {
     width: 65%;
   }
+  .showOrders {
+    display: flex;
+    align-items: center;
+    button {
+      font-size: 1.3em;
+      height: 5vh;
+      width: 25%;
+    }
+  }
 }
 
 #rooms {
@@ -227,8 +236,9 @@ table{
     }
   }
   .popular {
-    margin: 2%;
-    }
+    margin: 4%;
+    width: 100%;
+  }
 }
 
 .modal {
