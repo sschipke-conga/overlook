@@ -9,6 +9,7 @@ import RoomService from '../src/RoomService'
 import sampleBookings from './sampleBookings'
 import sampleRooms from './sampleRooms'
 import sampleRoomService from '../test/sampleRoomService'
+import sampleGuest from './sampleGuest'
 import domUpdates from '../src/domUpdates'
 
 chai.spy.on(domUpdates, ['displayTotalRevenue '])
@@ -22,13 +23,15 @@ const users = [{ id: 1, name: "Matilde Larson" },
   { id: 7, name: "Josianne Huels" },
   { id: 8, name: "Zachery Abbott" },
   { id: 9, name: "Paula Anderson" },
-  { id: 10, name: "Chyna Gulgowski" }]
+  { id: 10, name: "Chyna Gulgowski" }];
+  
+
 
 describe('Hotel', () => {
-  // let needed variables be DECLARED here
+
   let hotel;
   beforeEach(() => {
-    hotel = new Hotel(users, sampleRooms, sampleBookings, sampleRoomService, '2019/06/19');
+    hotel = new Hotel(users, sampleRooms, sampleBookings, sampleRoomService, '2019/09/06');
     chai.spy.on(domUpdates, ['displayTotalRevenue', 'displayAvailableRooms', 'displayOccupancy', 'displayBoookingStats', 'displayOrders'], () => {})
     hotel.open();
   });
@@ -52,9 +55,12 @@ describe('Hotel', () => {
 
   describe('findCurrentCustomer method', () => {
     it('should be able to find a current customer', () => {
-      hotel.findCurrentCustomer(6)
-      expect(hotel.currentCustomer).to.eql({id: 5, 
-        name: "Noemy Little"})
+      hotel.findCurrentCustomer(4)
+      expect(hotel.currentCustomer).to.eql(sampleGuest)
+    });
+    it('should be able to find a current customer', () => {
+      hotel.findCurrentCustomer(4)
+      expect(hotel.currentCustomer).to.eql(sampleGuest)
     });
   });
 
@@ -69,6 +75,6 @@ describe('Hotel', () => {
       name: "Steve Gupta"
     });
     expect(hotel.customers.length).to.equal(11)
-    })
+  })
 
 });

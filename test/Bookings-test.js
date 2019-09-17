@@ -10,7 +10,7 @@ import availableRooms from './availableRooms'
 import domUpdates from '../src/domUpdates'
 
 
-describe('Bookings', () => {
+describe.skip('Bookings', () => {
   let bookings;
   beforeEach(() => {
     chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy'], () => {})

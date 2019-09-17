@@ -204,4 +204,4 @@ const sampleGuest = {
           ]
 };
 
-default export sampleGuest;
+export default sampleGuest;

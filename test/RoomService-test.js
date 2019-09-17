@@ -8,7 +8,7 @@ import sampleRoomService from '../test/sampleRoomService'
 import domUpdates from '../src/domUpdates'
 
 
-describe('RoomService', () => {
+describe.skip('RoomService', () => {
   let roomService;
   beforeEach(() => {
     roomService = new RoomService(sampleRoomService);
