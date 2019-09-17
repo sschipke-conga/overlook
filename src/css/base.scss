@@ -229,7 +229,6 @@ table{
   .popular {
     margin: 2%;
     }
-  // }
 }
 
 .modal {
@@ -239,7 +238,6 @@ table{
   justify-content: center;
   height: 100%;
   position: fixed;
-  // top: 0;
   width: 100%;
   z-index: 1;
     .modal-content {
@@ -297,4 +295,19 @@ table{
         }
       }
     }
+}
+
+.menu {
+  select {
+    font-size: 1.3em;
+  }
+  .order-item {
+    font-size: 1.3em;
+    width: 50%;
+    height: 5vh;
+  }
+  button {
+    font-size: 1em;
+    width: 25%;
+  }
 }
