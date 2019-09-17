@@ -182,21 +182,26 @@ table{
 }
 
 #rooms {
-  align-items: center;
-.section-popular {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40%;
-  .section-bookings-table {
-    max-height: 45vh;
-      overflow: scroll;
-      overflow-x: hidden;
-      overflow-y: auto;
-      table-layout: fixed;
-      white-space: nowrap;
-      width: 70%;
-  }
+  // align-items: center;
+// .section-popular {
+//   display: flex;
+  flex-direction: row;
+//   align-items: center;
+//   width: 40%;
+  .section-rooms {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    .section-bookings-table {
+      max-height: 45vh;
+        // overflow: scroll;
+        overflow-x: hidden;
+        // overflow-y: auto;
+        table-layout: fixed;
+        white-space: nowrap;
+        width: 25%;
+    }
+}
   button {
     background: #76bce893;
     border: 2px solid black;
@@ -213,21 +218,7 @@ table{
   .popular {
     margin: 2%;
     }
-  }
-  .available-rooms {
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-      margin-left: 10px;
-      max-height: 47vh;
-      width: 60%;
-      button {
-        width: 100px;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-      }
+  // }
 }
 
 .modal {
@@ -249,5 +240,21 @@ table{
   padding: 30px;
   width: 50%;
   }
+}
 
+.content-bookings-modal {
+  .available-rooms {
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      margin-left: 10px;
+      max-height: 47vh;
+      width: 60%;
+      button {
+        width: 100px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
 }

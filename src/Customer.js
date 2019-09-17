@@ -20,7 +20,7 @@ class Customer {
 
   bookRoom(roomNumber, bookings, day) {
       let index = bookings.availableRooms.findIndex(room => room.number === roomNumber);
-      let newRoom = bookings.availableRooms.splice(index, 1);
+      let newRoom = bookings.availableRooms.splice(index, 1)[0];
       bookings.bookedRooms.push(newRoom);
       this.currentRoom = newRoom;
     let booking = { userID: this.id, date: day, roomNumber: newRoom.number}
@@ -35,10 +35,8 @@ class Customer {
 
   orderRoomService(price, item, day, orders) {
     let newOrder = {userID: this.id, date: day, food: item, totalCost: price};
-    console.log(newOrder);
     this.orders.push(newOrder);
     orders.push(newOrder)
-    console.log('hotel.orders, customer', orders, this)
   }
 
   calculateTotalRoomService() {
@@ -53,7 +51,7 @@ class Customer {
     let bookingsBill = this.allRooms.reduce((bill, room) => {
       bill += room.costPerNight
     return bill;
-    },0)
+    }, 0)
     return bookingsBill
   }
 

@@ -39,7 +39,7 @@ class RoomService {
         menu.push(order)
       }
       return menu
-    }, []);
+    }, []).sort((a, b) => a.price - b.price);
     return this.menu
   }
 

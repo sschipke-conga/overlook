@@ -24,7 +24,7 @@ class Bookings {
   getAvailableRoomsByDate(date) { 
     let bookingsByDate = this.getBookingsByDate(date).map(booking => booking.roomNumber);
     this.bookedRooms = this.rooms.filter(room => bookingsByDate.includes(room.number))
-    this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number));
+    this.availableRooms = this.rooms.filter(room => !bookingsByDate.includes(room.number)).sort((roomA, roomB) => roomA.costPerNight - roomB.costPerNight );
     return this.availableRooms;
   }
 

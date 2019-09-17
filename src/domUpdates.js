@@ -75,7 +75,6 @@ const domUpdates = {
 
 
   showCustomerBookings(name, bookings) {
-    // $('#rooms').css("flex-direction", "row");
     let $ection = $('.section-rooms');
     $ection.html('');
     $ection.append(`
@@ -100,6 +99,7 @@ const domUpdates = {
   },
   
   displayName(name) {
+    $('.section-current-room').remove();
     $('.display-customer').remove();
     $('h1').after(`
     <div class="display-customer">
