@@ -192,13 +192,14 @@ table{
   table {
     width: 65%;
   }
-  .showOrders {
+  .show-orders {
     display: flex;
+    flex-direction: column;
     align-items: center;
     button {
-      font-size: 1.3em;
-      height: 5vh;
-      width: 25%;
+      font-size: 1.1em;
+      height: 4vh;
+      width: 20%;
     }
   }
 }
