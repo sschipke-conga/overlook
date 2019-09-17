@@ -8,6 +8,7 @@ import sampleBookings from './sampleBookings'
 import sampleRooms from './sampleRooms'
 import availableRooms from './availableRooms'
 import domUpdates from '../src/domUpdates'
+import sampleGuest from './sampleGuest'
 
 
 describe('Bookings', () => {
@@ -26,7 +27,13 @@ describe('Bookings', () => {
     });
     it('should hold all the bookings', () => {
       expect(bookings.bookings).to.eql(sampleBookings)
-    })
+    });
+    it('should start off not knowing available rooms', () => {
+      expect(bookings.availableRooms).to.equal(undefined)
+    });
+    it('should start off not knowing which rooms are booked', () => {
+      expect(bookings.bookedRooms).to.equal(undefined)
+    });
   })
 
   it("should get specific bookings by date", () => {
@@ -72,7 +79,19 @@ describe('Bookings', () => {
         }
       ]);
     });
+  });
+  it('should find the most and least popular day', () => {
+    expect(bookings.findMostAndLeastPopularDay()).to.eql([{ day: '2019/08/10', number: 4 }, { day: '2019/08/25', number: 1 }]);
+  });
+
+  it('should find bookings by customer using their id', () => {
+    expect(bookings.findBookingsByCustomer(4)).to.eql(sampleGuest.bookings)
   })
+
+  it('should find all the rooms a customer has ever booked', () => {
+    expect(bookings.findRoomsForCustomer(4)).to.eql(sampleGuest.allRooms)
+  })
+
   it('should return the total revenue of booked rooms', () => {
     expect(bookings.findTotalRoomRevenue("2019/09/16")).to.equal(583.47);
   });
@@ -81,9 +100,7 @@ describe('Bookings', () => {
     bookings.getAvailableRoomsByDate('2019/09/16');
     expect(bookings.findOccupancy()).to.equal(12);
   });
-  it('should find the most and least popular day', () => {
-    expect(bookings.findMostAndLeastPopularDay()).to.eql([{ day: '2019/08/10', number: 4 }, { day: '2019/08/25', number: 1 }]);
-  })
+  
 
 
 })

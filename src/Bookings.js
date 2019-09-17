@@ -39,7 +39,7 @@ class Bookings {
       return popularBookings[b].length - popularBookings[a].length
     })
     let mostAndLeast = [{ day: date[0], number: (popularBookings[date[0]].length) },
-    { day: date[date.length - 1], number: (popularBookings[date[(date.length - 1)]].length) }];
+      { day: date[date.length - 1], number: (popularBookings[date[(date.length - 1)]].length) }];
     return mostAndLeast;
   }
 
@@ -48,11 +48,11 @@ class Bookings {
   }
 
   findRoomsForCustomer(id) {
-  return this.findBookingsByCustomer(id).reduce((acc, booking)=>{
-    let matchingRoom = this.rooms.find(room => room.number === booking.roomNumber);
-    acc.push(matchingRoom);
-    return acc;
-  }, [])
+    return this.findBookingsByCustomer(id).reduce((acc, booking)=>{
+      let matchingRoom = this.rooms.find(room => room.number === booking.roomNumber);
+      acc.push(matchingRoom);
+      return acc;
+    }, [])
   }
 
   findTotalRoomRevenue(date) {
