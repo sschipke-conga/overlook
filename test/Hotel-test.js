@@ -13,7 +13,6 @@ import sampleRooms from './sampleRooms'
 import sampleRoomService from '../test/sampleRoomService'
 import domUpdates from '../src/domUpdates'
 
-// chai.spy.on(domUpdates, ['displayTotalRevenue '])
 
 const users = [{ id: 1, name: "Matilde Larson" },
   { id: 2, name: "Chadrick Lowe" },
@@ -33,7 +32,7 @@ describe('Hotel', () => {
   let hotel;
   beforeEach(() => {
     hotel = new Hotel(users, sampleRooms, sampleBookings, sampleRoomService, '2019/09/06');
-    chai.spy.on(domUpdates, ['displayTotalRevenue', 'displayAvailableRooms', 'displayOccupancy', 'displayBoookingStats', 'displayOrders'], () => {})
+    chai.spy.on(domUpdates, ['displayAvailableRooms', 'displayOccupancy', 'displayBoookingStats', 'displayOrders', 'displayTotalRevenue'], () => true)
     hotel.open();
   });
   afterEach(() => {
@@ -75,6 +74,13 @@ describe('Hotel', () => {
       "bookings": []
     });
     expect(hotel.customers.length).to.equal(11)
+  })
+  it('should be able to open', () =>{
+    expect(domUpdates.displayOrders).to.have.been.called(1);
+    expect(domUpdates.displayTotalRevenue).to.have.been.called(1)
+    expect(domUpdates.displayAvailableRooms).to.have.been.called(1);
+    expect(domUpdates.displayOccupancy).to.have.been.called(1)
+    expect(domUpdates.displayBoookingStats).to.have.been.called(1)
   })
 
 });

@@ -9,12 +9,13 @@ import sampleRooms from './sampleRooms';
 import availableRooms from './availableRooms';
 import domUpdates from '../src/domUpdates';
 import sampleGuest from './sampleGuest';
-chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy', 'displayOrders', 'displayTotalRevenue', 'displaySearchGuests', 'showCustomerOrders', 'displayBills', 'showCustomerBookings', 'displayName'], () => true);
+
 
 describe('Bookings', () => {
   let bookings;
   beforeEach(() => {
     bookings = new Bookings(sampleRooms, sampleBookings);
+    chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy', 'displayOrders', 'displayTotalRevenue', 'displaySearchGuests', 'showCustomerOrders', 'displayBills', 'showCustomerBookings', 'displayName'], () => true);
   });
   afterEach(() => {
     chai.spy.restore(domUpdates)
