@@ -91,7 +91,7 @@ function searchCustomers() {
   } else {
     $results.empty();
     var searchGuests = hotel.customers.filter(guest => guest.name.toLowerCase().includes($earchInput.val().toLowerCase()))
-}
+  }
   if (!searchGuests || !searchGuests.length) {
     $results.empty();
     makeNewCustomerPrompt()
@@ -126,7 +126,6 @@ const makeNewCustomer = (e) => {
     $addInput.val('');
     $earchInput.val('');
     $('.add-customer-section').remove();
-    console.log(hotel.customers)
   }
 }
 
