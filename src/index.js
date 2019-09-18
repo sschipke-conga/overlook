@@ -11,6 +11,17 @@ import { stringify } from 'querystring';
 
 let hotel;
 let today = getCurrentDate();
+updateClock();
+
+setInterval(updateClock(), 60000)
+
+function updateClock() {
+  let time = new Date().toLocaleTimeString('en-US',
+    { timezone: "Madrid/Spain", hour: 'numeric', hour12: true, minute: 'numeric' }
+  )
+  $('.current-time').text(time);
+  setTimeout(updateClock, 60000);
+}
 
 Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users').then(response => response.json()),
@@ -33,21 +44,17 @@ $('body').click(e => {
     orderRoomService();
   }
   makeNewBooking(e);
-
-})
-
+});
 $('.search').click(e => {
   handleCustomerClick(e);
   makeNewCustomer(e)
-})
-
+});
 $Rooms.click(e  => {
   handleMakeNewBookingModal(e);
-})
-
+});
 $('#orders').click(e => {
   handleNewRoomService(e);
-})
+});
 
 
 $('#main-date').text(displayCurrentDate())
@@ -73,7 +80,7 @@ function getCurrentDate() {
 
 function displayCurrentDate() {
   let date = new Date()
-  let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
+  let options = {timezone: "Madrid/Spain", weekday: "long", year: "numeric", month: "long", day: "numeric"};
   return date.toLocaleDateString("en-US", options);
 }
 
