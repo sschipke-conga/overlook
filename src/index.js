@@ -13,7 +13,6 @@ let hotel;
 let today = getCurrentDate();
 updateClock();
 
-setInterval(updateClock(), 60000)
 
 function updateClock() {
   let time = new Date().toLocaleTimeString('en-US',
