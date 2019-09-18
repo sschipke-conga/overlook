@@ -51,12 +51,10 @@ $('#orders').click(e => {
 
 
 $('#main-date').text(displayCurrentDate())
-//these control the tabs
 $('.tabs-stage div').hide();
 $('.tabs-stage div:first').show();
 $('.tabs-nav li:first').addClass('tab-active');
 
-// Change tab class and display content
 $('.tabs-nav a').on('click', function (event) {
   event.preventDefault();
   $('.tabs-nav li').removeClass('tab-active');
@@ -64,7 +62,6 @@ $('.tabs-nav a').on('click', function (event) {
   $('.tabs-stage div').hide();
   $($(this).attr('href')).show();
 });
-////
 
 function getCurrentDate() {
   let date = new Date();

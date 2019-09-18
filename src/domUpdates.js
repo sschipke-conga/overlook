@@ -100,12 +100,11 @@ const domUpdates = {
   
   displayName(name) {
     $('.section-current-room').remove();
-    $('.display-customer').remove();
-    $('h1').after(`
-    <div class="display-customer">
+    $('.display-customer').html('');
+    $('.display-customer').append(`
       <h4 class="current-cutomer-header">Current Guest:</h4>
       <h3 class="current-customer">${name}</h3>
-    </div>`);
+    `);
   }
 
 }

@@ -19,9 +19,16 @@ header {
   height: 15vh;
   margin-left: 5%;
   margin-bottom: 1.5%;
-  padding: 50px 0 0 3%;
+  padding: 20px 0 0 3%;
   width: 90%;
-  div {
+  .welcome-time {
+    display:flex;
+    flex-direction: column;
+    h1 {
+      margin-bottom: 3%;
+    }
+  }
+  .widget-div {
     display: flex;
     flex-direction: column;
   }
