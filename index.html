@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+    <title>Etxea</title>
+  </head>
+  <body>
+    <header>
+      <div class="welcome-date">
+        <h1>Ongi Etorri!</h1>
+        <h2 id="main-date"></h2>
+      </div>
+      <div class="display-customer"></div>
+      <div class="widget-div">
+        <script type='text/javascript' src='https://darksky.net/widget/default-small/40.4299,-3.6692/uk12/en.js?width=100%&height=85&title=Full Forecast&textColor=000000&bgColor=fb0404&transparency=true&skyColor=undefined&fontFamily=Trebuchet MS&customFont=&units=uk'></script>
+        <p>Bilbao, Spain</p>
+        <h3 class="current-time">8:00am</h3>
+      </div>
+    </header>
+    <div class="tabs">
+      <ul class="tabs-nav">
+        <li><a href="#main">Main <img src="./images/reception.svg"></a></li>
+        <li><a href="#customer">Customer <img src="./images/network.svg"></a></li>
+        <li><a href="#rooms">Rooms <img src="./images/hotel.svg"></a></li>
+        <li><a href="#orders">Orders <img src="./images/room-service.svg">
+        </a></li>
+      </ul>
+      <div class="tabs-stage">
+        <div id="main">
+          <h3 class="main-date"><span id="main-date"></span></h3>
+          <h3>Total Rooms Available: <span id="rooms-today">152</span></h3>
+          <h3>Occupancy: <span id="percent-available"></span></h3>
+          <h3>Total Revenue for today: <span id="total-revenue"></span></h3>
+        </div>
+        <div id="customer">
+          <section class="search">
+            <label class="label-search" for="customer-search">Search for a customer below</label>
+            <input id="customer-search" type="search" placeholder="Type name to search">
+            <section class="search-results"></section>
+          </section>
+
+        </div>
+        <div id="rooms">
+          <section class="section-rooms">
+            <section class="section-popular">
+              <h3 class=most-booked>Most Booked Day:</h3>
+              <h3 class=least-booked>Slowest Day:</h3>
+            </section>
+          </section>
+        </div>
+        <div id="orders">
+          <h3 class="orders--h3">Here are the orders for today:</h3>
+          <section class="show-orders"></section>
+        </div>
+      </div>
+    </div>
+
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+</html>
