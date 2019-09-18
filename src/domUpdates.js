@@ -103,7 +103,7 @@ const domUpdates = {
     $('.display-customer').html('');
     $('.display-customer').append(`
       <h4 class="current-cutomer-header">Current Guest:</h4>
-      <h3 class="current-customer">${name}</h3>
+      <h2 class="current-customer">${name}</h2>
     `);
   }
 

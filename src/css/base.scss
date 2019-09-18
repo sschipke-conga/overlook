@@ -21,11 +21,14 @@ header {
   margin-bottom: 1.5%;
   padding: 20px 0 0 3%;
   width: 90%;
-  .welcome-time {
+  .welcome-date {
     display:flex;
     flex-direction: column;
     h1 {
       margin-bottom: 3%;
+    }
+    #main-date {
+      font-weight: 300;
     }
   }
   .widget-div {
@@ -33,7 +36,12 @@ header {
     flex-direction: column;
   }
   .display-customer {
+    display: flex;
+    flex-direction:column;
     align-items:  center;
+    h4 {
+      font-weight: 300;
+    }
   }
   iframe {
     width: 50%;
