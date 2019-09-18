@@ -166,9 +166,12 @@ function makeNewBooking(e) {
     guest.bookRoom(roomNumber, hotel.bookings, today);
     $('.span-room-total').text(`${guest.calculateTotalBookingsBill().toFixed(2)}`);
     $('.span-all-total').text(`${guest.calculateTotalBill().toFixed(2)}`);
+    hotel.bookings.getAvailableRoomsByDate(today);
     $('#total-revenue').text(`$${hotel.getTotalRevenueByDate()}`);
-    domUpdates.showCustomerBookings(guest.name, guest.bookings)
-    $Rooms.append(`${showCurrentRoom(guest.currentRoom)}`)
+    domUpdates.displayOccupancy((hotel.bookings.findOccupancy(today)));
+    domUpdates.displayAvailableRooms(hotel.bookings.availableRooms.length);
+    domUpdates.showCustomerBookings(guest.name, guest.bookings);
+    $Rooms.append(`${showCurrentRoom(guest.currentRoom)}`);
     removeModal();
   }
 }
