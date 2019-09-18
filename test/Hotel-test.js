@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import chai from 'chai';
 const expect = chai.expect;
 const spies = require('chai-spies');
@@ -10,7 +11,6 @@ import Customer from '../src/Customer'
 import sampleBookings from './sampleBookings'
 import sampleRooms from './sampleRooms'
 import sampleRoomService from '../test/sampleRoomService'
-import sampleGuest from './sampleGuest'
 import domUpdates from '../src/domUpdates'
 
 // chai.spy.on(domUpdates, ['displayTotalRevenue '])

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import RoomService from "./RoomService";
 import Customer from "./Customer";
 import Bookings from "./Bookings"
@@ -22,7 +23,7 @@ class Hotel {
   findCurrentCustomer(id) {
     let guest = this.customers.find(user => user.id === id)
     this.currentCustomer = new Customer(guest, this.bookings.findBookingsByCustomer(guest.id), this.bookings.findRoomsForCustomer(guest.id),
-    this.orders.findOrdersByCustomer(guest.id));
+      this.orders.findOrdersByCustomer(guest.id));
     return this.currentCustomer;
   }
 

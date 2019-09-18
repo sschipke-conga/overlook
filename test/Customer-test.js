@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import chai from 'chai';
 import domUpdates from '../src/domUpdates'
 const expect = chai.expect;
@@ -185,10 +186,10 @@ let userBookings = [
   { userID: 4, date: "2019/08/10", roomNumber: 6 }
 ];
 let sampleBookings = [{ userID: 1, date: '2019/09/12', roomNumber: 20 },
-{ userID: 1, date: '2019/09/16', roomNumber: 15 },
-{ userID: 1, date: '2019/09/29', roomNumber: 19 },
-{ userID: 1, date: '2019/08/22', roomNumber: 6 },
-{ userID: 1, date: '2019/08/15', roomNumber: 5 }];
+  { userID: 1, date: '2019/09/16', roomNumber: 15 },
+  { userID: 1, date: '2019/09/29', roomNumber: 19 },
+  { userID: 1, date: '2019/08/22', roomNumber: 6 },
+  { userID: 1, date: '2019/08/15', roomNumber: 5 }];
 
 let orders = [
   {
@@ -205,7 +206,7 @@ let orders = [
   }
 ];
 
-let allBookings = [...sampleBookings , ...userBookings];
+let allBookings = [...sampleBookings, ...userBookings];
 
 
 describe('Customer', () => {
@@ -282,7 +283,7 @@ describe('Customer', () => {
       expect(guestBookings.bookings.length).to.equal(18);
     });
   });
-  describe('orderRoomService' , () => {
+  describe('orderRoomService', () => {
     afterEach(() => {
       guestRoomService.orders.pop();
     });
@@ -299,10 +300,10 @@ describe('Customer', () => {
     it('its order should be an object', () => {
       guest.orderRoomService(9.89, 'Refined Rubber Sandwich', '2019/09/06', guestRoomService.orders);
       expect(guestRoomService.orders[(guestRoomService.orders.length - 1)]).to.eql({
-    userID: 4,
-    date: '2019/09/06',
-    food: 'Refined Rubber Sandwich',
-    totalCost: 9.89
+        userID: 4,
+        date: '2019/09/06',
+        food: 'Refined Rubber Sandwich',
+        totalCost: 9.89
       });
     });
   });

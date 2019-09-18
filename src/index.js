@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import $ from 'jquery';
 import './css/base.scss';
 import './images/reception.svg';
@@ -7,7 +8,6 @@ import './images/room-service.svg';
 import './images/sunset.jpg'
 import domUpdates from './domUpdates'
 import Hotel from './Hotel';
-import { stringify } from 'querystring';
 
 let hotel;
 let today = getCurrentDate();
@@ -28,7 +28,7 @@ Promise.all([
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms').then(response => response.json()),
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings').then(response => response.json()),
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/room-services/roomServices').then(response => response.json()),
-]).then(data => hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, today)).then(data => hotel.open())
+]).then(data => hotel = new Hotel(data[0].users, data[1].rooms, data[2].bookings, data[3].roomServices, today)).then(() => hotel.open())
 
 let $earchInput = $('#customer-search');
 let $Rooms = $('#rooms');

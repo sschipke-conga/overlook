@@ -175,6 +175,6 @@ const availableRooms = [
     numBeds: 1,
     costPerNight: 307.49
   }
-].sort((a,b) => a.costPerNight - b.costPerNight);
+].sort((a, b) => a.costPerNight - b.costPerNight);
 
 export default availableRooms;
