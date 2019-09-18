@@ -15,7 +15,7 @@ describe('Bookings', () => {
   let bookings;
   beforeEach(() => {
     bookings = new Bookings(sampleRooms, sampleBookings);
-    chai.spy.on(domUpdates, ['displayBookingStats', 'displayAvailableRooms', 'displayOccupancy', 'displayOrders', 'displayTotalRevenue', 'displaySearchGuests', 'showCustomerOrders', 'displayBills', 'showCustomerBookings', 'displayName'], () => true);
+    chai.spy.on(domUpdates, ['displayAvailableRooms', 'displayOccupancy', 'displayBoookingStats' ], () => true);
   });
   afterEach(() => {
     chai.spy.restore(domUpdates)
@@ -101,7 +101,12 @@ describe('Bookings', () => {
     bookings.getAvailableRoomsByDate('2019/09/16');
     expect(bookings.findOccupancy()).to.equal(12);
   });
-
+  it('should be able to open', () => {
+    bookings.open()
+    expect(domUpdates.displayAvailableRooms).to.have.been.called(1);
+    expect(domUpdates.displayOccupancy).to.have.been.called(1)
+    expect(domUpdates.displayBoookingStats).to.have.been.called(1)
+  });
 
 
 })

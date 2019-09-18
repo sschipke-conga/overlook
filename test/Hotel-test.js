@@ -81,6 +81,6 @@ describe('Hotel', () => {
     expect(domUpdates.displayAvailableRooms).to.have.been.called(1);
     expect(domUpdates.displayOccupancy).to.have.been.called(1)
     expect(domUpdates.displayBoookingStats).to.have.been.called(1)
-  })
+  });
 
 });
